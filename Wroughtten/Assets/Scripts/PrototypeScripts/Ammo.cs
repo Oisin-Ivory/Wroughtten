@@ -10,7 +10,7 @@ public class Ammo : MonoBehaviour
     public int ammoPelletCount = 12; // ammount of pelletes in shot
     public float ammoDamage = 25f;
 
-    public bool isInMag = false;
+    [SerializeField] public bool isInMag = false;
 
     public bool Shoot(){
         if(isSpent) return false;
@@ -19,4 +19,9 @@ public class Ammo : MonoBehaviour
         isSpent = true;
         return true;
     }
+
+    public IEnumerator EjectedRound(float timeTillCanFeed){
+            yield return new WaitForSeconds(timeTillCanFeed);
+            isInMag = false;
+        }
 }

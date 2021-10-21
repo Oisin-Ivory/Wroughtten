@@ -20,9 +20,6 @@ public class Saiga : MonoBehaviour
 
     #endregion
 
-    #region Animation
-    private Saiga_Animation saigaAnimator;
-    #endregion
 
     #region Firing
 

@@ -6,10 +6,10 @@ public class Player_Movement : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float groundSpeed = 6f;
-    //[SerializeField] private float airSpeed = 12f;
+    [SerializeField] private float airSpeed = 3f;
     private float gravity = -9.81f;
     private Vector3 velocity;
-    //[SerializeField] private float jumpHeight = 1f;
+    [SerializeField] private float jumpHeight = 1f;
     public bool onGround = false;
     [SerializeField] private Transform groundCheck;
 
@@ -34,10 +34,10 @@ public class Player_Movement : MonoBehaviour
 
             characterController.Move(move * groundSpeed * Time.deltaTime);
 
-            // if (Input.GetButtonDown("Jump") && onGround){
+            if (Input.GetButtonDown("Jump") && onGround){
 
-            //     velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            // }
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
 
             velocity.y += gravity * Time.deltaTime;
         }
