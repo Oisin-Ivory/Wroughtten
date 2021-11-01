@@ -31,10 +31,11 @@ public class CloseBolt : MonoBehaviour, IBolt
     [SerializeField] Vector3 ejectRoundRotate = Vector3.up;
     [SerializeField] float ejectRoundForce = 134f;
 
-    [SerializeField] bool willHoldOpenOnEmpty = true;
+    [SerializeField] bool willHoldOpenOnEmpty = true;  
+    [SerializeField] bool lockBoltOnEmptyMag = true;
 
-    bool holdingOpen=false;
-
+    [SerializeField] bool holdingOpen=false;
+    
     float minBoltPos = 0f;
     float maxBoltPos = 1f;
 
@@ -57,14 +58,24 @@ public class CloseBolt : MonoBehaviour, IBolt
             EjectRound();
         }
 
+        
+
         if(isHeld && !isRecoiling)
             UpdateBoltPosition(0,Input.GetAxis("Mouse Y"));
 
         if(holdingOpen){
             if(boltProgress==1f){
+                holdingOpen = false;
                 minBoltPos=0f;
+            }else if(boltProgress >= 0.9f && (weapon.getMagazine()==null || weapon.getMagazine().getBulletCount()==0)){
+                minBoltPos = 0.9f;
             }
         }
+
+         if(boltProgress==0f && (weapon.getMagazine()==null || weapon.getMagazine().getBulletCount()==0) ){
+                holdingOpen = true;
+            }
+        
         //Feed the round when bolt progress is .8-.85
         if(boltProgress < 0.85f && !hasRound && canTakeRound){
 
@@ -84,7 +95,7 @@ public class CloseBolt : MonoBehaviour, IBolt
                 UpdateBoltPosition(0,recoilStrenght);
             }else{
                 isRecoiling=false;
-                if(weapon.getMagazine().getBulletCount()==0){
+                if(weapon.getMagazine().getBulletCount()==0 && willHoldOpenOnEmpty){
                     holdingOpen = true;
                     minBoltPos = 0.9f;
                 }
@@ -101,7 +112,8 @@ public class CloseBolt : MonoBehaviour, IBolt
     }
 	
     private void RecoilBolt(){
-        isRecoiling = true;
+        if(hasRound)
+            isRecoiling = true;
 
     }
 
