@@ -39,6 +39,11 @@ public class CloseBolt : MonoBehaviour, IBolt
     float minBoltPos = 0f;
     float maxBoltPos = 1f;
 
+    [SerializeField] float ejectRoundAtBoltProgress = 0.85f;
+
+    
+    [SerializeField] float holdBoltOpenAt = 0.9f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +59,7 @@ public class CloseBolt : MonoBehaviour, IBolt
             RecoilBolt();
 
         }
-        if(boltProgress > 0.9f){
+        if(boltProgress > holdBoltOpenAt){
             EjectRound();
         }
 
@@ -66,18 +71,20 @@ public class CloseBolt : MonoBehaviour, IBolt
         if(holdingOpen){
             if(boltProgress==1f){
                 holdingOpen = false;
+                isLocked = false;
                 minBoltPos=0f;
-            }else if(boltProgress >= 0.9f && (weapon.getMagazine()==null || weapon.getMagazine().getBulletCount()==0)){
-                minBoltPos = 0.9f;
+            }else if(boltProgress >= holdBoltOpenAt && (weapon.getMagazine()==null || weapon.getMagazine().getBulletCount()==0)){
+                minBoltPos = holdBoltOpenAt;
             }
         }
 
          if(boltProgress==0f && (weapon.getMagazine()==null || weapon.getMagazine().getBulletCount()==0) ){
                 holdingOpen = true;
+                isLocked = true;
             }
         
         //Feed the round when bolt progress is .8-.85
-        if(boltProgress < 0.85f && !hasRound && canTakeRound){
+        if(boltProgress < ejectRoundAtBoltProgress && !hasRound && canTakeRound){
 
             if(weapon.getMagazine()!=null)
                 round = weapon.getMagazine().FeedRound();
@@ -97,7 +104,7 @@ public class CloseBolt : MonoBehaviour, IBolt
                 isRecoiling=false;
                 if(weapon.getMagazine().getBulletCount()==0 && willHoldOpenOnEmpty){
                     holdingOpen = true;
-                    minBoltPos = 0.9f;
+                    minBoltPos = holdBoltOpenAt;
                 }
 				
             }

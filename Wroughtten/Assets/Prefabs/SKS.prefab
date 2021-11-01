@@ -421,6 +421,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1990332481537054003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6557723820539970472}
+  m_Layer: 0
+  m_Name: StripperClipTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6557723820539970472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990332481537054003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.000112, y: 0.00007, z: 0.00128}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2761813494110625487}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2100720102631189255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,6 +1416,8 @@ GameObject:
   - component: {fileID: 6363124812110868744}
   - component: {fileID: 7378911754660775597}
   - component: {fileID: 6860617659069237839}
+  - component: {fileID: 3137153580081078961}
+  - component: {fileID: 4739855403075178020}
   m_Layer: 0
   m_Name: Bolt
   m_TagString: Untagged
@@ -1405,6 +1437,7 @@ Transform:
   m_LocalScale: {x: 51.589767, y: 51.589767, z: 51.589767}
   m_Children:
   - {fileID: 5362548504729273668}
+  - {fileID: 6557723820539970472}
   m_Father: {fileID: 4399246510734766873}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1487,6 +1520,39 @@ MonoBehaviour:
   ejectRoundsToward: {x: 0, y: 1, z: 0}
   ejectRoundRotate: {x: 0, y: 0, z: 0}
   ejectRoundForce: 134
+  willHoldOpenOnEmpty: 1
+  lockBoltOnEmptyMag: 1
+  holdingOpen: 0
+  ejectRoundAtBoltProgress: 0.85
+  holdBoltOpenAt: 0.9
+--- !u!114 &3137153580081078961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828452636200904040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee80d680dbb9e9b4f9adb99bb0f14af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachmentPoint: {fileID: 6557723820539970472}
+  attachedClip: {fileID: 0}
+  clipAttached: 0
+--- !u!65 &4739855403075178020
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828452636200904040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00030684404, y: 0.0002421168, z: 0.00013226132}
+  m_Center: {x: -0.00011912157, y: 0.000114521536, z: 0.0012894756}
 --- !u!1 &7902630523448185191
 GameObject:
   m_ObjectHideFlags: 0
