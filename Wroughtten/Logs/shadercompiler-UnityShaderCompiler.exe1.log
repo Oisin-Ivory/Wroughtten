@@ -1,4 +1,3 @@
-Base path: 'D:/Year 2/Semester 2/3D Game Development/2021.1.24f1/Editor/Data', plugins path 'D:/Year 2/Semester 2/3D Game Development/2021.1.24f1/Editor/Data/PlaybackEngines'
+Base path: 'C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 
-Cmd: shutdown

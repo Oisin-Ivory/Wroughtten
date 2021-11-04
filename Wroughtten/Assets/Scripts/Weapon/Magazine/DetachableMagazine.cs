@@ -12,6 +12,7 @@ public class DetachableMagazine : MonoBehaviour,IMagazine
     [SerializeField] Transform[] ammoStorePos = new Transform[5];
     private BoxCollider ammoDeposit;
     [SerializeField] int magazinecount;
+    [SerializeField] BoxCollider ammoFeedTrigger;
 
     void Awake(){
         ammoDeposit = gameObject.GetComponent<BoxCollider>();
@@ -65,5 +66,9 @@ public class DetachableMagazine : MonoBehaviour,IMagazine
     public int getBulletCount()
     {
         return magazineStack.Count;
+    }
+
+    public BoxCollider GetFeedTrigger(){
+        return ammoFeedTrigger;
     }
 }

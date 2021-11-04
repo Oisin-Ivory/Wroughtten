@@ -6,9 +6,7 @@ public class InternalMagazine : MonoBehaviour, IMagazine
 {
 
     [SerializeField] Stack<GameObject> magazineStack = new Stack<GameObject>();
-    
     [SerializeField] int magazineCapacity = 8;
-
     [SerializeField] Transform[] ammoStorePos = new Transform[5];
     private BoxCollider ammoDeposit;
     [SerializeField] int magazinecount;
@@ -46,8 +44,9 @@ public class InternalMagazine : MonoBehaviour, IMagazine
     public void LoadRound(GameObject roundToLoad){
         if(magazineStack.Count < magazineCapacity){
             if(roundToLoad.GetComponent<Ammo>().isInMag)return;
+            print("loadingRound: "+roundToLoad.name);
             magazineStack.Push(roundToLoad);
-            roundToLoad.transform.parent = gameObject.transform; //Make Parent the magazine, freeze rigidbody to stop movement
+            roundToLoad.transform.parent = this.transform; //Make Parent the magazine, freeze rigidbody to stop movement
             roundToLoad.GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY| 
                                                             RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
             roundToLoad.GetComponent<CapsuleCollider>().enabled = false; //Disable collider when in the magazine
@@ -65,7 +64,7 @@ public class InternalMagazine : MonoBehaviour, IMagazine
     public int getBulletCount(){
         return magazineStack.Count;
     }
-
+    
 }
     
 

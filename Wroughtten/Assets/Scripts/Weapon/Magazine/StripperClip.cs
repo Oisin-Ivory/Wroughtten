@@ -16,7 +16,9 @@ public class StripperClip : MonoBehaviour
     }
     public GameObject FeedRound(){
         if(clipStack.Count==0)return null;
-        return clipStack.Pop();
+        GameObject roundToFeed = clipStack.Pop();
+        roundToFeed.GetComponent<Ammo>().isInMag = false;
+        return roundToFeed;
     }
 
     public void UpdateBulletPosition(){
@@ -58,4 +60,9 @@ public class StripperClip : MonoBehaviour
         UpdateBulletPosition();
         
     }
+
+    public IEnumerator EjectedClip(float timeTillCanAttach){
+            yield return new WaitForSeconds(timeTillCanAttach);
+            isAttached = false;
+        }
 }

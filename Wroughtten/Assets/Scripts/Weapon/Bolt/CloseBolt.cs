@@ -7,17 +7,17 @@ public class CloseBolt : MonoBehaviour, IBolt
     //1 is open - 0 is closed
     [SerializeField] float boltProgress = 0f;
     [SerializeField] float boltSpeedModifier = 2f;
-    [SerializeField] Transform positionClosed,positionOpened;
 
+    [SerializeField] Transform positionClosed,positionOpened;
     [SerializeField] float boltSpringStrenght = 1f;
 
     [SerializeField] bool isLocked = false;
-    
     [SerializeField] bool isHeld = false;
 
     //Ammo
     [SerializeField] bool canTakeRound = false;
     [SerializeField] bool hasRound = false;
+    [SerializeField] float roundLaunchMultiplier = 134f;
     [SerializeField] GameObject round;
     [SerializeField] GameObject roundPosition;
 
@@ -26,22 +26,18 @@ public class CloseBolt : MonoBehaviour, IBolt
 
     [SerializeField] bool isRecoiling = false;
 	[SerializeField] float recoilStrenght = -4f;
-
     [SerializeField] Vector3 ejectRoundsToward = Vector3.up;
     [SerializeField] Vector3 ejectRoundRotate = Vector3.up;
     [SerializeField] float ejectRoundForce = 134f;
-
     [SerializeField] bool willHoldOpenOnEmpty = true;  
     [SerializeField] bool lockBoltOnEmptyMag = true;
-
-    [SerializeField] bool holdingOpen=false;
+    [SerializeField] public bool holdingOpen = false;
+    [SerializeField] public bool freezeBolt = false;
     
     float minBoltPos = 0f;
     float maxBoltPos = 1f;
 
     [SerializeField] float ejectRoundAtBoltProgress = 0.85f;
-
-    
     [SerializeField] float holdBoltOpenAt = 0.9f;
 
     // Start is called before the first frame update
@@ -79,6 +75,7 @@ public class CloseBolt : MonoBehaviour, IBolt
         }
 
          if(boltProgress==0f && (weapon.getMagazine()==null || weapon.getMagazine().getBulletCount()==0) ){
+                
                 holdingOpen = true;
                 isLocked = true;
             }
@@ -135,7 +132,7 @@ public class CloseBolt : MonoBehaviour, IBolt
         //round.GetComponent<Ammo>().isInMag = false;
         round.transform.parent = null;
         //done Add force away from the saiga transform
-        round.GetComponent<Rigidbody>().AddForce(gameObject.transform.up*132f + Vector3.right*Random.Range(10,40));
+        round.GetComponent<Rigidbody>().AddForce(gameObject.transform.up*roundLaunchMultiplier + Vector3.right*Random.Range(10,40));
         StartCoroutine(round.GetComponent<Ammo>().EjectedRound(3f));
         round = null;
         hasRound = false;
@@ -149,7 +146,8 @@ public class CloseBolt : MonoBehaviour, IBolt
     }
 
     public void UpdateBoltPosition(float inputX, float inputY){
-        //print("Moving Bolt " + inputY);
+        if(freezeBolt)return;
+        print("Moving Bolt " + inputY);
         if(Mathf.Abs(inputY)>1)
                 boltProgress += (inputY*-1) * Time.deltaTime * boltSpeedModifier;
 
@@ -164,5 +162,17 @@ public class CloseBolt : MonoBehaviour, IBolt
     private void OnDrawGizmos(){
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(ejectRoundsToward,ejectRoundForce);
+    }
+
+    public bool GetFreezeState(){
+        return freezeBolt;
+    }
+    
+    public bool GetIsHoldingOpen(){
+        return holdingOpen;
+    }
+
+    public void SetFreezeState(bool state){
+        freezeBolt = state;
     }
 }

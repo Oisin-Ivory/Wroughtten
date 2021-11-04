@@ -5,5 +5,6 @@ public interface IMagazine {
     void LoadRound(GameObject roundToLoad);
     void UpdateBulletPosition();
     int getBulletCount();
+
     GameObject gameObject { get ; }
 }
