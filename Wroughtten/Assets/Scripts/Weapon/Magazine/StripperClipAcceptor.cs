@@ -70,7 +70,7 @@ public class StripperClipAcceptor : MonoBehaviour
         if(attachedClip==null)return;
         
         clipAttached = false;
-        attachedClip.transform.parent = attachmentPoint;
+        attachedClip.transform.parent = null;
         attachedClip.GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.None;
         attachedClip.GetComponent<BoxCollider>().enabled = true;
         attachedClip.GetComponent<Rigidbody>().AddForce(gameObject.transform.up*clipLaunchMultiplier + Vector3.right*Random.Range(10,40));

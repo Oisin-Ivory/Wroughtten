@@ -11,6 +11,10 @@ public class StripperClip : MonoBehaviour
     [SerializeField]public bool isAttached = false;
     [SerializeField] BoxCollider loadCollider = null;
 
+
+    void Update(){
+        UpdateBulletPosition();
+    }
     int GetRounds(){
         return clipStack.Count;
     }

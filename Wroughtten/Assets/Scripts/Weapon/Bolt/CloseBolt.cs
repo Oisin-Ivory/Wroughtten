@@ -161,7 +161,7 @@ public class CloseBolt : MonoBehaviour, IBolt
     
     private void OnDrawGizmos(){
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(ejectRoundsToward,ejectRoundForce);
+        Gizmos.DrawSphere(ejectRoundsToward,0.5f);
     }
 
     public bool GetFreezeState(){
