@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class HandManager : MonoBehaviour
 {
-    [SerializeField] Hand[] hands;
+    [SerializeField] Hand[] hands; 
+
+    [SerializeField] Hand weaponHand;
 
     [SerializeField] float pickupDistance = 4f;
     private bool reloading = false;
@@ -24,15 +26,18 @@ public class HandManager : MonoBehaviour
         if(hands[0].handEmpty || hands[1].handEmpty){
             return;
         }
-        if(hands[0].handObject.TryGetComponent<Reloadable>(out Reloadable reloadPos) && hands[1].handObject.TryGetComponent<Ammo>(out Ammo ammo)){
+        if(hands[0].handObject.TryGetComponent<Reloadable>(out Reloadable reloadablescript) 
+        && hands[1].handObject.TryGetComponent<Loadable>(out Loadable itemToLoad)){
+            if(!reloadablescript.willAccept(itemToLoad))return;
+            print("reloading: "+hands[0].handObject.gameObject.name);
             reloading = true;
-            StartCoroutine(hands[1].lerpToPosition(reloadPos.loadingPosition,1f));
+            StartCoroutine(hands[1].lerpToPosition(reloadablescript.getLoadingPosition(itemToLoad),1f));
             reloading = false;
         }
         
     }
 
-    private void PickUpObject(string key,int hand){
+private void PickUpObject(string key,int hand){
         if(Input.GetKeyDown(key)){
             GameObject pickUpObj = GetObjectLookingAt();
             

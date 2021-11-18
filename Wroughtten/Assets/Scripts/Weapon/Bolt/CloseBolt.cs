@@ -147,7 +147,7 @@ public class CloseBolt : MonoBehaviour, IBolt
 
     public void UpdateBoltPosition(float inputX, float inputY){
         if(freezeBolt)return;
-        print("Moving Bolt " + inputY);
+        //print("Moving Bolt " + inputY);
         if(Mathf.Abs(inputY)>1)
                 boltProgress += (inputY*-1) * Time.deltaTime * boltSpeedModifier;
 

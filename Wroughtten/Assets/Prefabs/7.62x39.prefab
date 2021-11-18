@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 3944547615575530269}
   - component: {fileID: 1380124988449410909}
   - component: {fileID: 2952116364172858345}
+  - component: {fileID: 5138325643321217391}
   m_Layer: 0
   m_Name: 7.62x39
   m_TagString: Untagged
@@ -259,6 +260,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickup: 1
+--- !u!114 &5138325643321217391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359561473993809816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb61be9d390a254da7b87338a8ca6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoType: 0
 --- !u!1 &7904964512141349476
 GameObject:
   m_ObjectHideFlags: 0

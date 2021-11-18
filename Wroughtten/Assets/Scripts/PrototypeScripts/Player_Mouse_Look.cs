@@ -14,6 +14,7 @@ public class Player_Mouse_Look : MonoBehaviour
     void Start()
     {
         mouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity"); 
+       
         if(mouseSensitivity==0)mouseSensitivity=200f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -22,7 +23,7 @@ public class Player_Mouse_Look : MonoBehaviour
 
     void Update()
     {
-        if(Cursor.lockState==CursorLockMode.Locked){
+        if(Cursor.lockState==CursorLockMode.Locked && (!Input.GetButton("Jump")||Input.GetKeyDown("r"))){
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 

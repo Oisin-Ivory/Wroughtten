@@ -34,10 +34,10 @@ public class Player_Movement : MonoBehaviour
 
             characterController.Move(move * groundSpeed * Time.deltaTime);
 
-            if (Input.GetButtonDown("Jump") && onGround){
+            // if (Input.GetButtonDown("Jump") && onGround){
 
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
+            //     velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            // }
 
             velocity.y += gravity * Time.deltaTime;
         }

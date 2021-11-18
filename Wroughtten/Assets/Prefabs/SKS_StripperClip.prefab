@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 2580475132072085182}
   - component: {fileID: 5425301801435976047}
   - component: {fileID: 8082625864205473931}
+  - component: {fileID: 6025544391033543456}
   m_Layer: 0
   m_Name: SKS_StripperClip
   m_TagString: Untagged
@@ -357,6 +358,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingPosition: {fileID: 7572447154690257342}
+  acceptableTypes: 00000000
+  acceptableTypePositions:
+  - {fileID: 7572447154690257342}
 --- !u!114 &8082625864205473931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +374,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickup: 1
+--- !u!114 &6025544391033543456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5305540071604915526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb61be9d390a254da7b87338a8ca6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoType: 1
 --- !u!1 &5816497143012487525
 GameObject:
   m_ObjectHideFlags: 0
