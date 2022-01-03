@@ -5,10 +5,9 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private GameObject weaponMagazineGameObj = null;
-    
+    [SerializeField] public Vector3 weaponPosition;
     private IMagazine weaponMagazine;
     [SerializeField] bool detachableMagazine = false;
-
 
     void Awake(){
         if(weaponMagazineGameObj!=null){

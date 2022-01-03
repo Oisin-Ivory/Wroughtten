@@ -13,6 +13,7 @@ public class DetachableMagazine : MonoBehaviour,IMagazine
     private BoxCollider ammoDeposit;
     [SerializeField] int magazinecount;
     [SerializeField] BoxCollider ammoFeedTrigger;
+    [SerializeField] public bool canAcceptAmmo = true;
 
     void Awake(){
         ammoDeposit = gameObject.GetComponent<BoxCollider>();
@@ -70,5 +71,15 @@ public class DetachableMagazine : MonoBehaviour,IMagazine
 
     public BoxCollider GetFeedTrigger(){
         return ammoFeedTrigger;
+    }
+
+    public bool getCanAcceptAmmo()
+    {
+        return canAcceptAmmo;
+    }
+
+    public void setCanAcceptAmmo(bool state)
+    {
+        canAcceptAmmo = state;
     }
 }

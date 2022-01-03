@@ -14,6 +14,11 @@ public class CloseBolt : MonoBehaviour, IBolt
     [SerializeField] bool isLocked = false;
     [SerializeField] bool isHeld = false;
 
+    [SerializeField] bool willHoldOpenOnEmpty = true;  
+    [SerializeField] bool lockBoltOnEmptyMag = true;
+    [SerializeField] public bool holdingOpen = false;
+    [SerializeField] public bool freezeBolt = false;
+
     //Ammo
     [SerializeField] bool canTakeRound = false;
     [SerializeField] bool hasRound = false;
@@ -29,10 +34,7 @@ public class CloseBolt : MonoBehaviour, IBolt
     [SerializeField] Vector3 ejectRoundsToward = Vector3.up;
     [SerializeField] Vector3 ejectRoundRotate = Vector3.up;
     [SerializeField] float ejectRoundForce = 134f;
-    [SerializeField] bool willHoldOpenOnEmpty = true;  
-    [SerializeField] bool lockBoltOnEmptyMag = true;
-    [SerializeField] public bool holdingOpen = false;
-    [SerializeField] public bool freezeBolt = false;
+
     
     float minBoltPos = 0f;
     float maxBoltPos = 1f;
@@ -40,6 +42,12 @@ public class CloseBolt : MonoBehaviour, IBolt
     [SerializeField] float ejectRoundAtBoltProgress = 0.85f;
     [SerializeField] float holdBoltOpenAt = 0.9f;
 
+#region firing
+    [SerializeField] Transform barrellExit;
+    [SerializeField] float weaponSpread;
+    [SerializeField] float weaponSpreadDistance;
+
+#endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +60,7 @@ public class CloseBolt : MonoBehaviour, IBolt
         isHeld = Input.GetButton("Jump");
 
         if(Input.GetMouseButtonDown(0) && boltProgress==0){
-            RecoilBolt();
+            FireRound();
 
         }
         if(boltProgress > holdBoltOpenAt){
@@ -73,13 +81,12 @@ public class CloseBolt : MonoBehaviour, IBolt
                 minBoltPos = holdBoltOpenAt;
             }
         }
-
-         if(boltProgress==0f && (weapon.getMagazine()==null || weapon.getMagazine().getBulletCount()==0) ){
-                
+        if(lockBoltOnEmptyMag){
+            if(boltProgress==0f && (weapon.getMagazine()==null || weapon.getMagazine().getBulletCount()==0) ){
                 holdingOpen = true;
                 isLocked = true;
             }
-        
+        }
         //Feed the round when bolt progress is .8-.85
         if(boltProgress < ejectRoundAtBoltProgress && !hasRound && canTakeRound){
 
@@ -122,7 +129,7 @@ public class CloseBolt : MonoBehaviour, IBolt
     }
 
     public void EjectRound(){
-        print("Ejecting Round");
+        //print("Ejecting Round");
         if(round==null){
             canTakeRound = true;
             return;
@@ -139,6 +146,7 @@ public class CloseBolt : MonoBehaviour, IBolt
         canTakeRound = true;
         weapon.getMagazine().UpdateBulletPosition();
     }
+
 
     public void UpdateRoundPosition(){
         round.transform.position = roundPosition.transform.position;
@@ -158,6 +166,52 @@ public class CloseBolt : MonoBehaviour, IBolt
         if(round!=null) UpdateRoundPosition();
     }
 
+
+    public void FireRound(){
+        if(round==null)return;
+        Ammo ammocmpt = round.GetComponent<Ammo>();
+        if(ammocmpt.isSpent)return;
+
+        if(boltProgress!=0) return;
+
+        if(ammocmpt.Shoot()){
+             #region Raycasting
+             RaycastHit hit;
+             Vector3 targetHitPoint = Vector3.zero;
+             //Todo add partical and sound effects
+             for(int i = 0; i < ammocmpt.ammoPelletCount ; i++){
+                 Vector3 forwardVector;
+                 if(ammocmpt.spread){
+                    Vector3 deviation3D = Random.insideUnitCircle * weaponSpread; // make some deviation
+                    Quaternion rot = Quaternion.LookRotation(Vector3.forward * ammocmpt.range + deviation3D);//get rotation
+                    forwardVector = barrellExit.transform.rotation * rot * Vector3.forward; // apply rotation
+                }else{
+                    targetHitPoint = barrellExit.transform.rotation * (Vector3.forward * weaponSpreadDistance) +  (Random.insideUnitSphere*weaponSpread);
+                    
+                 }
+
+                Debug.DrawRay(barrellExit.transform.position,targetHitPoint, Color.red,Mathf.Infinity);
+
+                if(Physics.Raycast(barrellExit.transform.position,targetHitPoint, out hit, ammocmpt.range)){
+
+                    GameObject hitGameObject = hit.transform.gameObject;
+
+                    if(hitGameObject==null) return ;
+
+                    if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
+
+                      health.TakeDamage(round.GetComponent<Ammo>().ammoDamage);
+                    }
+                }
+            }
+            RecoilBolt();
+            #endregion
+        }
+    }
+
+
+
+    
     
     private void OnDrawGizmos(){
         Gizmos.color = Color.red;

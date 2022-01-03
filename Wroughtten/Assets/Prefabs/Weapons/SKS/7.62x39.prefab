@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4100880641797775214}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.1175825e-25, y: 1.4210855e-17, z: -0.00011526692}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00011526692}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3532634442009094519}
@@ -212,10 +212,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b8e22fade9b89c42a194d4fbb8e307e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spentMesh: {fileID: 4617522257319032757, guid: 8afdbd7ac8c2bdf4789ec15ec5ef729e, type: 3}
+  spentMesh: {fileID: 0}
+  meshFilter: {fileID: 6974512949806434903}
   isSpent: 0
   ammoPelletCount: 1
   ammoDamage: 100
+  spread: 0
+  range: 200
   isInMag: 0
 --- !u!54 &3944547615575530269
 Rigidbody:
@@ -260,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickup: 1
+  canStore: 1
 --- !u!114 &5138325643321217391
 MonoBehaviour:
   m_ObjectHideFlags: 0

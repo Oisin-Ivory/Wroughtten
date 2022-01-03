@@ -10,6 +10,7 @@ public class InternalMagazine : MonoBehaviour, IMagazine
     [SerializeField] Transform[] ammoStorePos = new Transform[5];
     private BoxCollider ammoDeposit;
     [SerializeField] int magazinecount;
+    [SerializeField] public bool canAcceptAmmo = true;
 
     void Awake(){
         ammoDeposit = gameObject.GetComponent<BoxCollider>();
@@ -42,6 +43,7 @@ public class InternalMagazine : MonoBehaviour, IMagazine
     }
 
     public void LoadRound(GameObject roundToLoad){
+        if(!canAcceptAmmo)return;
         if(magazineStack.Count < magazineCapacity){
             if(roundToLoad.GetComponent<Ammo>().isInMag)return;
             print("loadingRound: "+roundToLoad.name);
@@ -64,7 +66,16 @@ public class InternalMagazine : MonoBehaviour, IMagazine
     public int getBulletCount(){
         return magazineStack.Count;
     }
-    
+
+    public bool getCanAcceptAmmo()
+    {
+        return canAcceptAmmo;
+    }
+
+    public void setCanAcceptAmmo(bool state)
+    {
+        canAcceptAmmo = state;
+    }
 }
     
 

@@ -6,5 +6,7 @@ public interface IMagazine {
     void UpdateBulletPosition();
     int getBulletCount();
 
+    bool getCanAcceptAmmo();
+    void setCanAcceptAmmo(bool state);
     GameObject gameObject { get ; }
 }

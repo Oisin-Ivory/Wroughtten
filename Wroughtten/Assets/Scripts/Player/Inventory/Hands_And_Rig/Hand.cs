@@ -9,7 +9,7 @@ public class Hand : MonoBehaviour
     [SerializeField] public bool handEmpty = true;
     [SerializeField] public GameObject handObject;
     [SerializeField] private bool hadRigidBody;
-    private bool isLocked = false;
+    public bool isLocked = false;
 
 
     void Update(){
@@ -22,16 +22,26 @@ public class Hand : MonoBehaviour
     }
 
 
+    public bool isEmpty(){
+        return handEmpty;
+    }
+
     public void PickUpObject(GameObject obj){
+        print("picking up: "+obj.name);
+        
+        print("hand empty: "+!handEmpty + "\nIsLocked: "+isLocked);
         if(obj==null || !handEmpty || isLocked)return;
-        if(obj.TryGetComponent<PickUpAble>(out PickUpAble objPickupState)){
+        print("pasted first: "+obj.name);
+        if(obj.TryGetComponent<InteractionProperties>(out InteractionProperties objPickupState)){
             if(!objPickupState.canPickup){
                 return;
             }
+            print("pasted second: "+obj.name);
         }else{
             return;
         }
-
+            
+        print("pasted third: "+obj.name);
         if(obj.TryGetComponent<Rigidbody>(out Rigidbody objRB)){
             objRB.constraints =
             RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY| 
@@ -43,9 +53,36 @@ public class Hand : MonoBehaviour
         obj.transform.parent = gameObject.transform;
         obj.transform.rotation = new Quaternion(0,0,0,0);
         handObject = obj;
-        handObject.transform.localPosition = Vector3.zero;
+        
+        print("picked up: "+obj.name);
+        StartCoroutine(lerpObjToPosition(obj,Vector3.zero,0.25f));
+        
         handEmpty = false;
     }
+
+    public IEnumerator lerpObjToPosition(GameObject obj, Vector3 pos, float time){
+        isLocked = true;
+        float timeSpent = 0;
+        while(timeSpent<time){
+            //print("timeSpent: "+timeSpent);
+            timeSpent+=Time.deltaTime;
+            obj.transform.localPosition = Vector3.Lerp(obj.transform.localPosition,pos,timeSpent/time);
+            yield return true;        
+        }
+        
+        yield return true;
+        isLocked = false;
+    }
+
+    public GameObject TransferItem(){
+        if(handEmpty || isLocked) return null;
+        GameObject obj = handObject;
+        handObject.transform.parent = null;
+        handObject = null;
+        handEmpty = true;
+        return obj;
+    }
+
 
     public void DropObject(){
         if(handEmpty || isLocked)return;
@@ -54,37 +91,73 @@ public class Hand : MonoBehaviour
             handObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
 
+        print("Setting parent to null in /Hand/DropObject");
         handObject.transform.parent = null;
         handObject = null;
         handEmpty = true;
     }
 
-    public IEnumerator lerpToPosition(Transform pos, float time){
+#region Hand Movement Lerps
+    public IEnumerator lerpToPosition(Vector3 pos, float time){
         isLocked = true;
         float timeSpent = 0;
         while(timeSpent<time){
-            print("timeSpent: "+timeSpent);
+            //print("timeSpent: "+timeSpent);
             timeSpent+=Time.deltaTime;
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position,pos.transform.position,timeSpent/time);
-            gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation,pos.transform.rotation,timeSpent/time);
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position,pos,timeSpent/time);
             yield return true;        
         }
         
         yield return true;
-        gameObject.transform.localPosition = originalHandPos;
         isLocked = false;
     }
 
+    public IEnumerator lerpToLocalPosition(Vector3 pos, float time){
+        isLocked = true;
+        float timeSpent = 0;
+        while(timeSpent<time){
+            //print("timeSpent: "+timeSpent);
+            timeSpent+=Time.deltaTime;
+            gameObject.transform.localPosition = Vector3.Lerp(gameObject.transform.localPosition,pos,timeSpent/time);
+            yield return true;        
+        }
+        
+        yield return true;
+        isLocked = false;
+    }
+
+    public IEnumerator lerpToPositionReload(Vector3 pos, float time){
+        isLocked = true;
+        float timeSpent = 0;
+        while(timeSpent<time){
+            //print("timeSpent: "+timeSpent);
+            timeSpent+=Time.deltaTime;
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position,pos,timeSpent/time);
+            yield return true;        
+        }
+        
+        yield return true;
+        ResetHandPos();
+        isLocked = false;
+    }
+
+#endregion
+    public void ResetHandPos(){
+        StartCoroutine(lerpToLocalPosition(originalHandPos,1f));
+    }
     private void ManageObjects(){
         if(handObject!=null){
            if(handObject.transform.parent != gameObject.transform){
-                print(handObject.name + " is not a child of "+gameObject.name+" it is a child of "+handObject.transform.parent);
+                //print(handObject.name + " is not a child of "+gameObject.name+" it is a child of "+handObject.transform.parent);
                 handObject = null;
                 handEmpty = true;
             }
         }
     }
 
+    public Vector3 getOrigin(){
+        return originalHandPos;
+    }
 
     private void OnDrawGizmos(){
         Gizmos.color = Color.blue;

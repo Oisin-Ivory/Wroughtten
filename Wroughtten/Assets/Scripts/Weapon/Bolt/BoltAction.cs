@@ -1,16 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BoltAction : MonoBehaviour
+    
+public class BoltAction : MonoBehaviour, IBolt
 {
     float boltProgress = 0f;
-    bool boltStageOne = true;
-    bool boltStageTwo = false;
+    [SerializeField]bool boltStageOne = true;
+    [SerializeField]bool boltStageTwo = false;
     float stageOneProgress,stageTwoProgress = 0f;
     [SerializeField] float boltSpeedModifier = 2f;
     public Transform positionClosed,position1,position2;
 
+    [SerializeField] GameObject roundPosition;
+    [SerializeField] GameObject round;
+    [SerializeField] bool canTakeRound = false;
+    [SerializeField] bool hasRound = false;
+    [SerializeField] float roundLaunchMultiplier = 134f;
+    [SerializeField] Weapon weapon;
+
+    [SerializeField] float ejectRoundAtBoltProgress = 1;
+    [SerializeField] float feedRoundAtBoltProgress = 0.85f;
+
+    #region firing
+    [SerializeField] Transform barrellExit;
+    [SerializeField] float weaponSpread;
+    [SerializeField] float weaponSpreadDistance;
+
+    [SerializeField] bool isHeld = false;
+    
+    [SerializeField] public bool freezeBolt = false;
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +42,51 @@ public class BoltAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        boltProgress = (stageOneProgress+stageTwoProgress)/2;
-        if(Input.GetButtonDown("Jump")){
-            Debug.Log("BoltProgress: "+boltProgress);
+        isHeld = Input.GetButton("Jump");
+        // if(boltProgress!=1){
+        //     weapon.getMagazine().setCanAcceptAmmo(false);
+        // }else{
+        //     weapon.getMagazine().setCanAcceptAmmo(true);
+        // }
+
+        if(isHeld)
+            UpdateBoltPosition(Input.GetAxis("Mouse X"),Input.GetAxis("Mouse Y"));
+
+
+        if(Input.GetMouseButtonDown(0) && boltProgress==0){
+            FireRound();
         }
+
+        if(boltProgress == ejectRoundAtBoltProgress){
+            EjectRound();
+        }
+
+        if(canTakeRound && (boltProgress < feedRoundAtBoltProgress) && boltStageTwo && !hasRound){
+            //Debug.Log("Feeding round if");
+            if(weapon.getMagazine()!=null){
+                round = weapon.getMagazine().FeedRound();
+                //Debug.Log("Feeding round from mag");
+            }
+
+            if(round!=null){
+                
+                //Debug.Log("Round not null");
+                canTakeRound = false;
+                hasRound = true;
+            }
+
+        }
+
+    }
+
+    public void UpdateBoltPosition(float inputX, float inputY)
+    {
+        boltProgress = (stageOneProgress+stageTwoProgress)/2;
         if(boltStageOne){
             //Debug.Log("Stage 1: "+stageOneProgress);
             //Debug.Log(Mathf.Abs(Input.GetAxis("Mouse X")));
-            if(Mathf.Abs(Input.GetAxis("Mouse X"))>1)
-                stageOneProgress += (Input.GetAxis("Mouse X")*-1) * Time.deltaTime * boltSpeedModifier;
+            if(Mathf.Abs(inputX)>1)
+                stageOneProgress += (inputX*-1) * Time.deltaTime * boltSpeedModifier;
 
             stageOneProgress = Mathf.Clamp(stageOneProgress,0,1);
             this.transform.position = Vector3.Lerp(positionClosed.position,position1.position,stageOneProgress);
@@ -41,10 +97,10 @@ public class BoltAction : MonoBehaviour
             }
         }
         if(boltStageTwo){
-            Debug.Log("Stage 2: "+stageTwoProgress);
+            //Debug.Log("Stage 2: "+stageTwoProgress);
             //Debug.Log(Mathf.Abs(Input.GetAxis("Mouse Y")));
-            if(Mathf.Abs(Input.GetAxis("Mouse Y"))>1)
-                stageTwoProgress += (Input.GetAxis("Mouse Y")*-1) * Time.deltaTime * boltSpeedModifier;
+            if(Mathf.Abs(inputY)>1)
+                stageTwoProgress += (inputY*-1) * Time.deltaTime * boltSpeedModifier;
 
             if(stageTwoProgress<0){
                 stageOneProgress = 0.99f;
@@ -56,6 +112,90 @@ public class BoltAction : MonoBehaviour
             this.transform.rotation = Quaternion.Lerp(position1.rotation,position2.rotation,stageTwoProgress);
             
         }
-
     }
+
+    public void UpdateRoundPosition()
+    { 
+        round.transform.position = roundPosition.transform.position;
+        round.transform.rotation = roundPosition.transform.rotation;
+    }
+
+
+    public void EjectRound()
+    {
+        //print("Ejecting Round");
+        if(round==null){
+            canTakeRound = true;
+            return;
+        }
+        round.GetComponent<CapsuleCollider>().enabled = true;
+        round.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        //round.GetComponent<Ammo>().isInMag = false;
+        round.transform.parent = null;
+        //done Add force away from the saiga transform
+        round.GetComponent<Rigidbody>().AddForce(gameObject.transform.up*roundLaunchMultiplier + Vector3.right*Random.Range(10,40));
+        StartCoroutine(round.GetComponent<Ammo>().EjectedRound(3f));
+        round = null;
+        hasRound = false;
+        canTakeRound = true;
+        weapon.getMagazine().UpdateBulletPosition();
+    }
+
+    public void SetFreezeState(bool state)
+    {
+        freezeBolt = state;
+    }
+
+    public bool GetFreezeState()
+    {
+        
+        return freezeBolt;
+    }
+
+    public bool GetIsHoldingOpen()
+    {
+        return boltProgress==1;
+    }
+
+     private void FireRound(){
+         if(round==null)return;
+
+        Ammo ammocmpt = round.GetComponent<Ammo>();
+        if(ammocmpt.isSpent)return;
+
+        if(boltProgress!=0) return;
+
+        if(ammocmpt.Shoot()){
+             #region Raycasting
+             RaycastHit hit;
+             Vector3 targetHitPoint = Vector3.zero;
+             //Todo add partical and sound effects
+             for(int i = 0; i < ammocmpt.ammoPelletCount ; i++){
+                 Vector3 forwardVector;
+                 if(ammocmpt.spread){
+                    Vector3 deviation3D = Random.insideUnitCircle * weaponSpread; // make some deviation
+                    Quaternion rot = Quaternion.LookRotation(Vector3.forward * ammocmpt.range + deviation3D);//get rotation
+                    forwardVector = barrellExit.transform.rotation * rot * Vector3.forward; // apply rotation
+                }else{
+                    targetHitPoint = barrellExit.transform.rotation * (Vector3.forward * weaponSpreadDistance) +  (Random.insideUnitSphere*weaponSpread);
+                    
+                 }
+
+                Debug.DrawRay(barrellExit.transform.position,targetHitPoint, Color.red,Mathf.Infinity);
+
+                if(Physics.Raycast(barrellExit.transform.position,targetHitPoint, out hit, ammocmpt.range)){
+
+                    GameObject hitGameObject = hit.transform.gameObject;
+
+                    if(hitGameObject==null) return ;
+
+                    if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
+
+                      health.TakeDamage(round.GetComponent<Ammo>().ammoDamage);
+                    }
+                }
+            }
+            #endregion
+        }
+     }
 }
