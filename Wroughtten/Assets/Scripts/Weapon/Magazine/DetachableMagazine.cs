@@ -14,6 +14,8 @@ public class DetachableMagazine : MonoBehaviour,IMagazine
     [SerializeField] int magazinecount;
     [SerializeField] BoxCollider ammoFeedTrigger;
     [SerializeField] public bool canAcceptAmmo = true;
+    [SerializeField]public string[] compAmmoTags;
+    public bool isAttached = false;
 
     void Awake(){
         ammoDeposit = gameObject.GetComponent<BoxCollider>();
@@ -38,7 +40,9 @@ public class DetachableMagazine : MonoBehaviour,IMagazine
 
     private void OnTriggerEnter(Collider colObj){
         //print("Collider2D with" + colObj.name);
+        if(isAttached)return;
             if(colObj.TryGetComponent<Ammo>(out Ammo ammoToDeposit)){
+                //if(!Ammo.IsCompatableAmmoTypes(compAmmoTags,ammoToDeposit.compAmmoTags))return;
                 LoadRound(colObj.gameObject);
             }
             UpdateBulletPosition();
@@ -81,5 +85,15 @@ public class DetachableMagazine : MonoBehaviour,IMagazine
     public void setCanAcceptAmmo(bool state)
     {
         canAcceptAmmo = state;
+    }
+    
+    public string[] getCompAmmoTags()
+    {
+        return compAmmoTags;
+    }
+
+    public IEnumerator EjectedMagazine(float timeTillCanAttach){
+        yield return new WaitForSeconds(timeTillCanAttach);
+        isAttached = false;
     }
 }

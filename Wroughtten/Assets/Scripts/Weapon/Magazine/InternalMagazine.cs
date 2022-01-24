@@ -11,9 +11,12 @@ public class InternalMagazine : MonoBehaviour, IMagazine
     private BoxCollider ammoDeposit;
     [SerializeField] int magazinecount;
     [SerializeField] public bool canAcceptAmmo = true;
-
+    [SerializeField]public string[] compAmmoTags;
     void Awake(){
         ammoDeposit = gameObject.GetComponent<BoxCollider>();
+    }
+    void Update(){
+        UpdateBulletPosition();
     }
 
     public void UpdateBulletPosition(){
@@ -36,6 +39,7 @@ public class InternalMagazine : MonoBehaviour, IMagazine
     private void OnTriggerEnter(Collider colObj){
         //print("Collider2D with" + colObj.name);
             if(colObj.TryGetComponent<Ammo>(out Ammo ammoToDeposit)){
+                if(!Ammo.IsCompatableAmmoTypes(compAmmoTags,ammoToDeposit.compAmmoTags))return;
                 LoadRound(colObj.gameObject);
             }
             UpdateBulletPosition();
@@ -75,6 +79,11 @@ public class InternalMagazine : MonoBehaviour, IMagazine
     public void setCanAcceptAmmo(bool state)
     {
         canAcceptAmmo = state;
+    }
+
+    public string[] getCompAmmoTags()
+    {
+        return compAmmoTags;
     }
 }
     

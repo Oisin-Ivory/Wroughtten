@@ -220,6 +220,9 @@ MonoBehaviour:
   spread: 0
   range: 200
   isInMag: 0
+  compAmmoTags:
+  - "7.62\xD739mm"
+  - SKSClip
 --- !u!54 &3944547615575530269
 Rigidbody:
   m_ObjectHideFlags: 0

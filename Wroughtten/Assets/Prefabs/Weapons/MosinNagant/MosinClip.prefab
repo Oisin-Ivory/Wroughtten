@@ -154,6 +154,9 @@ MonoBehaviour:
   - {fileID: 5585811671860854675}
   isAttached: 0
   loadCollider: {fileID: 6373439265425285204}
+  compAmmoTags:
+  - "7.62\xD754mmR"
+  - MosinClip
 --- !u!114 &6098841043531183850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b615d29f66030b94f9a969e8ca5d42f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingPosition: {fileID: 2607956494717970025}
   acceptableTypes: 00000000
   acceptableTypePositions:
   - {fileID: 2607956494717970025}

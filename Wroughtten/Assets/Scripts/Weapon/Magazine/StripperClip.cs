@@ -10,6 +10,7 @@ public class StripperClip : MonoBehaviour
 
     [SerializeField]public bool isAttached = false;
     [SerializeField] BoxCollider loadCollider = null;
+    [SerializeField]public string[] compAmmoTags;
 
 
     void Update(){
@@ -51,9 +52,13 @@ public class StripperClip : MonoBehaviour
         
     }
 
+    private bool checkAmmoComp(Ammo ammo){
+        return Ammo.IsCompatableAmmoTypes(compAmmoTags,ammo.compAmmoTags);
+    }
     public void LoadRound(GameObject roundToLoad){
+        if(!checkAmmoComp(roundToLoad.GetComponent<Ammo>())) return;
         if(clipStack.Count < clipCapacity){
-            if(roundToLoad.GetComponent<Ammo>().isInMag)return;
+            if(roundToLoad.GetComponent<Ammo>().isInMag) return;
             clipStack.Push(roundToLoad);
             roundToLoad.transform.parent = gameObject.transform; //Make Parent the magazine, freeze rigidbody to stop movement
             roundToLoad.GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY| 
@@ -68,5 +73,5 @@ public class StripperClip : MonoBehaviour
     public IEnumerator EjectedClip(float timeTillCanAttach){
             yield return new WaitForSeconds(timeTillCanAttach);
             isAttached = false;
-        }
+    }
 }

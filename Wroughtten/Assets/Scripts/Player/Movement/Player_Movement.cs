@@ -21,6 +21,7 @@ public class Player_Movement : MonoBehaviour
     void Update(){
 
         if(Cursor.lockState==CursorLockMode.Locked){
+            //print("Movbing");
             onGround = Physics.CheckSphere(groundCheck.transform.position,0.1f) ? true : false;
 
             float x = Input.GetAxis("Horizontal");

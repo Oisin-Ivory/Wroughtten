@@ -21,14 +21,18 @@ public class BoltAction : MonoBehaviour, IBolt
     [SerializeField] float ejectRoundAtBoltProgress = 1;
     [SerializeField] float feedRoundAtBoltProgress = 0.85f;
 
+    [SerializeField] public bool autoEjectClip = false;
+
     #region firing
     [SerializeField] Transform barrellExit;
     [SerializeField] float weaponSpread;
     [SerializeField] float weaponSpreadDistance;
 
-    [SerializeField] bool isHeld = false;
+    [SerializeField] public bool isHeld = false;
     
     [SerializeField] public bool freezeBolt = false;
+    [SerializeField] Vector3 recoilDir = Vector3.back;
+    [SerializeField] float weaponRecoilForce = 0.2f;
 
     #endregion
 
@@ -37,26 +41,13 @@ public class BoltAction : MonoBehaviour, IBolt
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        weapon.setBolt(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        isHeld = Input.GetButton("Jump");
-        // if(boltProgress!=1){
-        //     weapon.getMagazine().setCanAcceptAmmo(false);
-        // }else{
-        //     weapon.getMagazine().setCanAcceptAmmo(true);
-        // }
-
-        if(isHeld)
-            UpdateBoltPosition(Input.GetAxis("Mouse X"),Input.GetAxis("Mouse Y"));
-
-
-        if(Input.GetMouseButtonDown(0) && boltProgress==0){
-            FireRound();
-        }
-
+        
         if(boltProgress == ejectRoundAtBoltProgress){
             EjectRound();
         }
@@ -81,6 +72,8 @@ public class BoltAction : MonoBehaviour, IBolt
 
     public void UpdateBoltPosition(float inputX, float inputY)
     {
+        if(freezeBolt)return;
+
         boltProgress = (stageOneProgress+stageTwoProgress)/2;
         if(boltStageOne){
             //Debug.Log("Stage 1: "+stageOneProgress);
@@ -157,15 +150,16 @@ public class BoltAction : MonoBehaviour, IBolt
         return boltProgress==1;
     }
 
-     private void FireRound(){
-         if(round==null)return;
+     public int FireRound(){
+         if(round==null)return -1;
 
         Ammo ammocmpt = round.GetComponent<Ammo>();
-        if(ammocmpt.isSpent)return;
+        if(ammocmpt.isSpent)return -1;
 
-        if(boltProgress!=0) return;
+        if(boltProgress!=0) return 0;
 
         if(ammocmpt.Shoot()){
+            weapon.RecoilWeapon(recoilDir,weaponRecoilForce*ammocmpt.recoilForceMultiplier);
              #region Raycasting
              RaycastHit hit;
              Vector3 targetHitPoint = Vector3.zero;
@@ -187,7 +181,7 @@ public class BoltAction : MonoBehaviour, IBolt
 
                     GameObject hitGameObject = hit.transform.gameObject;
 
-                    if(hitGameObject==null) return ;
+                    if(hitGameObject==null) return 1;
 
                     if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
 
@@ -197,5 +191,18 @@ public class BoltAction : MonoBehaviour, IBolt
             }
             #endregion
         }
+        return 1;
      }
+
+     public bool getHeld(){
+         return isHeld;
+     }
+
+     public void setHeld(bool state){
+        isHeld = state;
+    }
+
+    public bool getClipAutoEject(){
+        return autoEjectClip;
+    }
 }

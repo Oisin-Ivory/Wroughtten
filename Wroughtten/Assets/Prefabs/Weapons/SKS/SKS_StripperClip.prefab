@@ -303,6 +303,9 @@ MonoBehaviour:
   - {fileID: 8933371874377914557}
   isAttached: 0
   loadCollider: {fileID: 4198531408468469707}
+  compAmmoTags:
+  - "7.62\xD739mm"
+  - SKSClip
 --- !u!65 &4198531408468469707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -357,7 +360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b615d29f66030b94f9a969e8ca5d42f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingPosition: {fileID: 7572447154690257342}
   acceptableTypes: 00000000
   acceptableTypePositions:
   - {fileID: 7572447154690257342}
@@ -374,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPickup: 1
+  canStore: 1
 --- !u!114 &6025544391033543456
 MonoBehaviour:
   m_ObjectHideFlags: 0

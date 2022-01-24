@@ -11,7 +11,6 @@ public class Hand : MonoBehaviour
     [SerializeField] private bool hadRigidBody;
     public bool isLocked = false;
 
-
     void Update(){
         ManageObjects();
     }
@@ -27,16 +26,16 @@ public class Hand : MonoBehaviour
     }
 
     public void PickUpObject(GameObject obj){
-        print("picking up: "+obj.name);
+        //print("picking up: "+obj.name);
         
-        print("hand empty: "+!handEmpty + "\nIsLocked: "+isLocked);
+        //print("hand empty: "+!handEmpty + "\nIsLocked: "+isLocked);
         if(obj==null || !handEmpty || isLocked)return;
-        print("pasted first: "+obj.name);
+        //print("pasted first: "+obj.name);
         if(obj.TryGetComponent<InteractionProperties>(out InteractionProperties objPickupState)){
             if(!objPickupState.canPickup){
                 return;
             }
-            print("pasted second: "+obj.name);
+            //print("pasted second: "+obj.name);
         }else{
             return;
         }
@@ -61,6 +60,7 @@ public class Hand : MonoBehaviour
     }
 
     public IEnumerator lerpObjToPosition(GameObject obj, Vector3 pos, float time){
+        
         isLocked = true;
         float timeSpent = 0;
         while(timeSpent<time){
@@ -98,19 +98,6 @@ public class Hand : MonoBehaviour
     }
 
 #region Hand Movement Lerps
-    public IEnumerator lerpToPosition(Vector3 pos, float time){
-        isLocked = true;
-        float timeSpent = 0;
-        while(timeSpent<time){
-            //print("timeSpent: "+timeSpent);
-            timeSpent+=Time.deltaTime;
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position,pos,timeSpent/time);
-            yield return true;        
-        }
-        
-        yield return true;
-        isLocked = false;
-    }
 
     public IEnumerator lerpToLocalPosition(Vector3 pos, float time){
         isLocked = true;
@@ -127,6 +114,7 @@ public class Hand : MonoBehaviour
     }
 
     public IEnumerator lerpToPositionReload(Vector3 pos, float time){
+        if(isLocked)yield break;
         isLocked = true;
         float timeSpent = 0;
         while(timeSpent<time){
@@ -155,12 +143,23 @@ public class Hand : MonoBehaviour
         }
     }
 
+    public void UpdateWeaponPosition(bool ads){
+        if(handObject==null)return;
+        if(handObject.TryGetComponent<Weapon>(out Weapon wpn)){
+            if(ads)
+                wpn.gameObject.transform.localPosition = wpn.getWeaponAdsPosition();
+            else
+                wpn.gameObject.transform.localPosition = wpn.getWeaponPosition();
+            
+        }
+    }
+
     public Vector3 getOrigin(){
         return originalHandPos;
     }
 
     private void OnDrawGizmos(){
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(transform.position,0.2f);
+        Gizmos.DrawSphere(transform.position,0.025f);
     }
 }

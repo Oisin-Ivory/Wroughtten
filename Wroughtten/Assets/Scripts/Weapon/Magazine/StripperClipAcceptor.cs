@@ -11,8 +11,7 @@ public class StripperClipAcceptor : MonoBehaviour
     [SerializeField] float clipLaunchMultiplier = 75f;
     float timeSinceLastFeed = 0f;
     IBolt weaponBolt = null;
-    [SerializeField] IBolt weaponBoltGameObject = null;
-    
+    [SerializeField]public string[] compAmmoTags;
 
     void Awake(){
         //Time.timeScale = (0.1f);
@@ -25,12 +24,17 @@ public class StripperClipAcceptor : MonoBehaviour
                 FeedRounds(0,Input.GetAxis("Mouse Y"));
             }
         }
+        if(attachedClip==null)return;
+        attachedClip.gameObject.transform.localPosition = Vector3.zero;
+        attachedClip.transform.rotation = attachmentPoint.rotation;    
+    
     }
     void OnTriggerEnter(Collider col){
         if(!weaponBolt.GetIsHoldingOpen())return;
         print(col.gameObject.name);
         GameObject colGO = col.gameObject;
         if(colGO.TryGetComponent<StripperClip>(out StripperClip clipToAttach)){
+            if(!Ammo.IsCompatableAmmoTypes(clipToAttach.compAmmoTags,compAmmoTags))return;
             if(clipToAttach.isAttached)return;
             attachedClip = clipToAttach.gameObject;
             clipAttached = true;
@@ -59,14 +63,14 @@ public class StripperClipAcceptor : MonoBehaviour
             attachedClip.GetComponent<StripperClip>().UpdateBulletPosition();
             timeSinceLastFeed  = 0f;
         }
-        if(inputY>3){
+        if(inputY>2){
             print("Ejecting Clip");
            Ejectclip();
         }
                 
     }
 
-    private void Ejectclip(){
+    public void Ejectclip(){
         if(attachedClip==null)return;
         
         clipAttached = false;

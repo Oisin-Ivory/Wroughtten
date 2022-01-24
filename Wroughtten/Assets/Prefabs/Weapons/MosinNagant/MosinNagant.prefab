@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 4027516513855834013}
   - component: {fileID: 1251273118014246356}
   - component: {fileID: 8995889134709661680}
+  - component: {fileID: -4528008651473346077}
   m_Layer: 0
   m_Name: MosinNagant
   m_TagString: Untagged
@@ -1021,8 +1022,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponMagazineGameObj: {fileID: 8117851463799134189}
+  weaponFireSelect: {fileID: -4528008651473346077}
   weaponPosition: {x: 0.159, y: -0.144, z: 0.5}
+  weaponAdsPosition: {x: 0, y: -0.103, z: 0.487}
   detachableMagazine: 0
+  clipAcceptor: {fileID: 1138139769377806328}
+  magAcceptor: {fileID: 0}
+  magazinePosition: {fileID: 0}
 --- !u!114 &5704217214929950955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,7 +1041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b615d29f66030b94f9a969e8ca5d42f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingPosition: {fileID: 1042728638892694185}
   acceptableTypes: 0000000001000000
   acceptableTypePositions:
   - {fileID: 6035804767877565062}
@@ -1083,6 +1088,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPickup: 1
   canStore: 0
+--- !u!114 &-4528008651473346077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094950427087589826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cf575edeab85e4f9213c1631ec6339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorStates: 0000000001000000
+  locked: 0
+  state: 0
+  numStates: 0
 --- !u!1 &6678284989221855299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1197,7 @@ MonoBehaviour:
   weapon: {fileID: 6126744982595866128}
   ejectRoundAtBoltProgress: 1
   feedRoundAtBoltProgress: 0.85
+  autoEjectClip: 1
   barrellExit: {fileID: 3641393947521925539}
   weaponSpread: 1
   weaponSpreadDistance: 100
@@ -1198,6 +1220,8 @@ MonoBehaviour:
   attachedClip: {fileID: 0}
   clipAttached: 0
   clipLaunchMultiplier: 75
+  compAmmoTags:
+  - MosinClip
 --- !u!65 &2891561431245622641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1396,6 +1420,8 @@ MonoBehaviour:
   - {fileID: 3058168088817391080}
   magazinecount: 0
   canAcceptAmmo: 1
+  compAmmoTags:
+  - "7.62\xD754mmR"
 --- !u!65 &3717216367758471612
 BoxCollider:
   m_ObjectHideFlags: 0

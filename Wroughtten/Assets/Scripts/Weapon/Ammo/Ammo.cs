@@ -13,7 +13,8 @@ public class Ammo : MonoBehaviour
     [SerializeField] public bool spread = false;
     [SerializeField] public float range = 200;
     [SerializeField] public bool isInMag = false;
-
+    [SerializeField]public string[] compAmmoTags;
+    [SerializeField]public float recoilForceMultiplier = 1f;
     public bool Shoot(){
         if(isSpent) return false;
 
@@ -25,5 +26,15 @@ public class Ammo : MonoBehaviour
     public IEnumerator EjectedRound(float timeTillCanFeed){
             yield return new WaitForSeconds(timeTillCanFeed);
             isInMag = false;
+    }
+
+    public static bool IsCompatableAmmoTypes(string[] compAmmoTags1,string[] compAmmoTags2){
+        foreach(string tag1 in compAmmoTags1){
+            foreach(string tag2 in compAmmoTags2){
+                print(tag1 + " : " + tag2 + " = " + (tag1==tag2));
+                if(tag1==tag2)return true;
+            }
         }
+        return false;
+    }
 }

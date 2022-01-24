@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8629925311278785741}
   - component: {fileID: 3147958741011771502}
   - component: {fileID: 8278502025048956053}
+  - component: {fileID: 3007938817456570751}
   m_Layer: 0
   m_Name: SKS
   m_TagString: Untagged
@@ -58,8 +59,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponMagazineGameObj: {fileID: 9114930343948698245}
+  weaponFireSelect: {fileID: 3007938817456570751}
   weaponPosition: {x: 0.146, y: -0.147, z: 0.426}
+  weaponAdsPosition: {x: 0, y: -0.106, z: 0.36}
   detachableMagazine: 0
+  clipAcceptor: {fileID: 3137153580081078961}
+  magAcceptor: {fileID: 0}
+  magazinePosition: {fileID: 0}
 --- !u!114 &8835947026095911955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b615d29f66030b94f9a969e8ca5d42f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingPosition: {fileID: 5362548504729273668}
   acceptableTypes: 0000000001000000
   acceptableTypePositions:
   - {fileID: 369614104461834498}
@@ -120,6 +125,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04082957, y: 0.14578637, z: 1}
   m_Center: {x: -0.0014063865, y: -0.036125284, z: 0}
+--- !u!114 &3007938817456570751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35618771626045047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cf575edeab85e4f9213c1631ec6339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorStates: 000000000100000002000000
+  locked: 0
+  state: 0
+  numStates: 0
 --- !u!1 &141725940172869826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,6 +1675,7 @@ MonoBehaviour:
   ejectRoundForce: 134
   ejectRoundAtBoltProgress: 0.85
   holdBoltOpenAt: 0.9
+  autoEjectClip: 0
   barrellExit: {fileID: 7263663861126773777}
   weaponSpread: 1
   weaponSpreadDistance: 10
@@ -1674,6 +1696,7 @@ MonoBehaviour:
   attachedClip: {fileID: 0}
   clipAttached: 0
   clipLaunchMultiplier: 75
+  compAmmoTags: []
 --- !u!65 &4739855403075178020
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2020,6 +2043,9 @@ MonoBehaviour:
   - {fileID: 7387893695531370308}
   - {fileID: 1599648713152772450}
   magazinecount: 0
+  canAcceptAmmo: 1
+  compAmmoTags:
+  - "7.62\xD739mm"
 --- !u!65 &1274606991010485565
 BoxCollider:
   m_ObjectHideFlags: 0

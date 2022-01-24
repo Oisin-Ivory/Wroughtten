@@ -8,5 +8,6 @@ public interface IMagazine {
 
     bool getCanAcceptAmmo();
     void setCanAcceptAmmo(bool state);
+    string[] getCompAmmoTags();
     GameObject gameObject { get ; }
 }

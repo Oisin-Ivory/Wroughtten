@@ -6,7 +6,7 @@ public class CloseBolt : MonoBehaviour, IBolt
 {
     //1 is open - 0 is closed
     [SerializeField] float boltProgress = 0f;
-    [SerializeField] float boltSpeedModifier = 2f;
+    [SerializeField] public float boltSpeedModifier = 2f;
 
     [SerializeField] Transform positionClosed,positionOpened;
     [SerializeField] float boltSpringStrenght = 1f;
@@ -34,13 +34,15 @@ public class CloseBolt : MonoBehaviour, IBolt
     [SerializeField] Vector3 ejectRoundsToward = Vector3.up;
     [SerializeField] Vector3 ejectRoundRotate = Vector3.up;
     [SerializeField] float ejectRoundForce = 134f;
-
+    [SerializeField] Vector3 recoilDir = Vector3.back;
+    [SerializeField] float weaponRecoilForce = 0.1f;
     
     float minBoltPos = 0f;
     float maxBoltPos = 1f;
 
     [SerializeField] float ejectRoundAtBoltProgress = 0.85f;
     [SerializeField] float holdBoltOpenAt = 0.9f;
+    [SerializeField] public bool autoEjectClip = false;
 
 #region firing
     [SerializeField] Transform barrellExit;
@@ -53,24 +55,22 @@ public class CloseBolt : MonoBehaviour, IBolt
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        weapon.setBolt(this);
         //Time.timeScale = 0.1f;
     }   
 
     void Update(){
-        isHeld = Input.GetButton("Jump");
+        //isHeld = Input.GetButton("Jump");
 
-        if(Input.GetMouseButtonDown(0) && boltProgress==0){
-            FireRound();
-
-        }
+        
         if(boltProgress > holdBoltOpenAt){
             EjectRound();
         }
 
         
 
-        if(isHeld && !isRecoiling)
-            UpdateBoltPosition(0,Input.GetAxis("Mouse Y"));
+        //if(isHeld && !isRecoiling)
+        //    UpdateBoltPosition(0,Input.GetAxis("Mouse Y"));
 
         if(holdingOpen){
             if(boltProgress==1f){
@@ -167,14 +167,15 @@ public class CloseBolt : MonoBehaviour, IBolt
     }
 
 
-    public void FireRound(){
-        if(round==null)return;
+    public int FireRound(){
+        if(round==null)return -1;
         Ammo ammocmpt = round.GetComponent<Ammo>();
-        if(ammocmpt.isSpent)return;
+        if(ammocmpt.isSpent)return -1;
 
-        if(boltProgress!=0) return;
-
+        if(boltProgress!=0) return 0;
+    
         if(ammocmpt.Shoot()){
+            weapon.RecoilWeapon(recoilDir,weaponRecoilForce*ammocmpt.recoilForceMultiplier);
              #region Raycasting
              RaycastHit hit;
              Vector3 targetHitPoint = Vector3.zero;
@@ -196,7 +197,7 @@ public class CloseBolt : MonoBehaviour, IBolt
 
                     GameObject hitGameObject = hit.transform.gameObject;
 
-                    if(hitGameObject==null) return ;
+                    if(hitGameObject==null) return 1;
 
                     if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
 
@@ -207,6 +208,7 @@ public class CloseBolt : MonoBehaviour, IBolt
             RecoilBolt();
             #endregion
         }
+        return 1;
     }
 
 
@@ -228,5 +230,15 @@ public class CloseBolt : MonoBehaviour, IBolt
 
     public void SetFreezeState(bool state){
         freezeBolt = state;
+    }
+    public bool getHeld(){
+         return isHeld;
+    }
+    public void setHeld(bool state){
+        isHeld = state;
+    }
+
+    public bool getClipAutoEject(){
+        return autoEjectClip;
     }
 }

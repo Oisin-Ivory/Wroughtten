@@ -56,6 +56,8 @@ MonoBehaviour:
   spread: 0
   range: 300
   isInMag: 0
+  compAmmoTags:
+  - "7.62\xD754mmR"
 --- !u!54 &9164519764094134244
 Rigidbody:
   m_ObjectHideFlags: 0

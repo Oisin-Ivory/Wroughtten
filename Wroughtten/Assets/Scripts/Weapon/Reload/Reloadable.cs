@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Reloadable : MonoBehaviour
 {
-    [SerializeField] public Transform loadingPosition;
     [SerializeField] private AmmoType[] acceptableTypes;
     [SerializeField] private Transform[] acceptableTypePositions;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,13 @@ public class HandManager : MonoBehaviour
 
     [SerializeField] float pickupDistance = 4f;
     private bool reloading = false;
+    private float timeSinceReload = 10f;
+    [SerializeField] private bool ADS = false;
 
     [SerializeField] ChestRigManager chestRigManager;
 
     private void Update(){
+        timeSinceReload+=Time.deltaTime;
         PickUpObject("e",1);
         PickUpObject("q",0);
         DropObject("x",1);
@@ -22,11 +26,33 @@ public class HandManager : MonoBehaviour
         if(Input.GetKeyDown("r")){
             Reload();
         }
+        HandleInput();
     }
 
-#region reloading
+    private void HandleInput()
+    {
+        if(!hands[0].isEmpty() && hands[1].isEmpty()){
+            if(hands[0].handObject.TryGetComponent<Weapon>(out Weapon weapon)){
+                weapon.HandleInputs();
+            }
+        }
+        if(Input.GetMouseButtonDown(1)){
+            ADS = !ADS;
+            UpdateHandPosition();
+        }
+    }
+
+    #region reloading
     private void Reload(){
         if(reloading)return;
+        if(!hands[0].handEmpty && hands[1].handEmpty){
+            if(hands[0].handObject.TryGetComponent<Weapon>(out Weapon wpn)){
+                if(wpn.detachableMagazine){
+                    wpn.magAcceptor.Ejectmag();
+                }
+            }
+        }
+
         if(hands[0].handEmpty || hands[1].handEmpty){
             return;
         }
@@ -34,11 +60,11 @@ public class HandManager : MonoBehaviour
         && hands[1].handObject.TryGetComponent<Loadable>(out Loadable itemToLoad)){
             if(!reloadablescript.willAccept(itemToLoad))return;
             //print("reloading: "+hands[0].handObject.gameObject.name);
-            reloading = true;
+            
+            if(timeSinceReload<1f)return;
+            Debug.Log("Starting Coroutine");
             StartCoroutine(hands[1].lerpToPositionReload(reloadablescript.getLoadingPosition(itemToLoad).position,0.25f));
-            
-            
-            reloading = false;
+            timeSinceReload = 0;
         }
         
     }
@@ -86,7 +112,10 @@ private void PickUpObject(string key,int hand){
         }
         if(!hands[0].isEmpty() && hands[1].isEmpty()){
             if(hands[0].handObject.TryGetComponent<Weapon>(out Weapon weapon)){
-                StartCoroutine(hands[0].lerpToLocalPosition(weapon.weaponPosition,0.25f));
+                if(ADS)
+                    StartCoroutine(hands[0].lerpToLocalPosition(weapon.getWeaponAdsPosition(),0.25f));
+                else
+                    StartCoroutine(hands[0].lerpToLocalPosition(weapon.getWeaponPosition(),0.25f));
             }
         }else{
             hands[0].ResetHandPos();
@@ -134,6 +163,27 @@ private void PickUpObject(string key,int hand){
             if ( Input.GetKeyDown( "" + i ) )
             {
                 RetrieveStoreItem(i-1,handIndex);
+                return;
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.H)){
+            if(hands[0].isEmpty() && !hands[0].isLocked){
+                print("retrieving holstered item");
+                GameObject retItem = chestRigManager.RetrieveHolstered();
+                Debug.Log("Retrieved item: "+retItem.name);
+                if(retItem == null)return;
+                hands[0].PickUpObject(retItem);
+            }else if(!hands[0].isEmpty()){
+//                print("holstered item: " + hands[0].handObject.name);
+                if(hands[0].handObject.TryGetComponent<Weapon>(out Weapon holsterWeapon) && chestRigManager.HolsterIsEmpty()){
+                    if(hands[0].handObject == null)return;
+                    try{
+                    chestRigManager.HolsterWeapon(TransferItem(0));
+                    }catch{
+                        print("Failed to store weapon due to rapid swap speed");
+                    }
+                }
             }
         }
     }

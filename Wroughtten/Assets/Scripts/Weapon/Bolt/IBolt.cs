@@ -7,6 +7,10 @@ public interface IBolt {
     void EjectRound();
     void SetFreezeState(bool state);
     bool GetFreezeState();
-    
     bool GetIsHoldingOpen();
+    int FireRound();
+    bool getHeld();
+    void setHeld(bool state);
+
+    bool getClipAutoEject();
 }
