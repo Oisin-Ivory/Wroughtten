@@ -51,7 +51,7 @@ public class Weapon : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.X)){
+        if(Input.GetKeyDown(KeyCode.C)){
             weaponFireSelect.NextState();
         }
            
@@ -86,6 +86,11 @@ public class Weapon : MonoBehaviour
     public void setMagazine(IMagazine mag){
         weaponMagazineGameObj = mag.gameObject;
         weaponMagazine = mag;
+    }
+
+    public void nullMagazine(){
+        weaponMagazineGameObj = null;
+        weaponMagazine = null;
     }
 
 

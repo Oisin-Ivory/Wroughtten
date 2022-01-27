@@ -21,6 +21,10 @@ public class DetachableMagazine : MonoBehaviour,IMagazine
         ammoDeposit = gameObject.GetComponent<BoxCollider>();
     }
 
+    void Update(){
+        UpdateBulletPosition();
+    }
+
     public void UpdateBulletPosition(){
         if(magazineStack.Count==0)return;
         int index = 0;

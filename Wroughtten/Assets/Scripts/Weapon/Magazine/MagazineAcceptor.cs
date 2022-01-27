@@ -53,5 +53,6 @@ public class MagazineAcceptor : MonoBehaviour
         
         StartCoroutine(attachedMagazine.GetComponent<DetachableMagazine>().EjectedMagazine(1f));
         attachedMagazine = null;
+        attachedWeapon.nullMagazine();
     }
 }

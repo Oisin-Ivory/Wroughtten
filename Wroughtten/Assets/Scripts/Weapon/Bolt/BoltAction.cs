@@ -4,39 +4,49 @@ using UnityEngine;
     
 public class BoltAction : MonoBehaviour, IBolt
 {
+    [Header("Bolt Settings")]
+     
+    [SerializeField] Weapon weapon;
     float boltProgress = 0f;
     [SerializeField]bool boltStageOne = true;
     [SerializeField]bool boltStageTwo = false;
-    float stageOneProgress,stageTwoProgress = 0f;
+    [SerializeField]float stageOneProgress = 0f;
+    [SerializeField]float stageTwoProgress = 0f;
     [SerializeField] float boltSpeedModifier = 2f;
-    public Transform positionClosed,position1,position2;
-
-    [SerializeField] GameObject roundPosition;
-    [SerializeField] GameObject round;
-    [SerializeField] bool canTakeRound = false;
-    [SerializeField] bool hasRound = false;
-    [SerializeField] float roundLaunchMultiplier = 134f;
-    [SerializeField] Weapon weapon;
-
     [SerializeField] float ejectRoundAtBoltProgress = 1;
     [SerializeField] float feedRoundAtBoltProgress = 0.85f;
 
     [SerializeField] public bool autoEjectClip = false;
 
-    #region firing
-    [SerializeField] Transform barrellExit;
-    [SerializeField] float weaponSpread;
-    [SerializeField] float weaponSpreadDistance;
+    [Header("Bolt & Round Positions")]
+    [SerializeField] Transform positionClosed;
+    [SerializeField] Transform position1;
+    [SerializeField] Transform position2;
+    [SerializeField] GameObject roundPosition;
+    
+    [Header("Bolt States")]
+
 
     [SerializeField] public bool isHeld = false;
     
     [SerializeField] public bool freezeBolt = false;
-    [SerializeField] Vector3 recoilDir = Vector3.back;
+
+    [Header("Round Settings")]
+    [SerializeField] GameObject round;
+    [SerializeField] bool canTakeRound = false;
+    [SerializeField] bool hasRound = false;
+    [SerializeField] float roundLaunchMultiplier = 134f;
+
+    [Header("Recoil Settings")]
+	[SerializeField] Vector3 recoilDir = Vector3.back;
     [SerializeField] float weaponRecoilForce = 0.2f;
 
-    #endregion
+    [Header("Firing")]
+    [SerializeField] Transform barrellExit;
+    [SerializeField] float weaponSpread;
+    [SerializeField] float weaponSpreadDistance;
+    
 
-    // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

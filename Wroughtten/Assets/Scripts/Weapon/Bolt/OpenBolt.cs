@@ -4,51 +4,52 @@ using UnityEngine;
 
 public class OpenBolt : MonoBehaviour, IBolt
 {
-    //1 is open - 0 is closed
+
+    [Header("Bolt Settings")]
+    [SerializeField] Weapon weapon;
     [SerializeField] float boltProgress = 0f;
     [SerializeField] public float boltSpeedModifier = 2f;
-
-    [SerializeField] Transform positionClosed,positionOpened;
     [SerializeField] float boltSpringStrenght = 2f;
+    [SerializeField] float ejectRoundAtBoltProgress = 0.85f;
+    [SerializeField] float collectRoundBeforeBoltProgress = 0.70f;
+    [SerializeField]float minBoltPos = 0f;
+    [SerializeField]float maxBoltPos = 1f;
 
+    [Header("Bolt & Round Positions")]
+    [SerializeField] Transform positionClosed;
+    [SerializeField] Transform positionOpened;
+    [SerializeField] GameObject roundPosition;
+
+    
+    [Header("Bolt States")]
     [SerializeField] bool isLocked = false;
     [SerializeField] bool isHeld = false;
 
     [SerializeField] public bool holdingOpen = false;
     [SerializeField] public bool freezeBolt = false;
+    [SerializeField] bool isRecoiling = false;
 
-    //Ammo
+    [Header("Round Settings")]
+    [SerializeField] GameObject round;
     [SerializeField] bool canTakeRound = false;
     [SerializeField] bool hasRound = false;
     [SerializeField] float roundLaunchMultiplier = 134f;
-    [SerializeField] GameObject round;
-    [SerializeField] GameObject roundPosition;
-
-    //MagazineReference
-    [SerializeField] Weapon weapon;
-
-    [SerializeField] bool isRecoiling = false;
-	[SerializeField] float recoilStrenght = -4f;
     [SerializeField] Vector3 ejectRoundsToward = Vector3.up;
     [SerializeField] Vector3 ejectRoundRotate = Vector3.up;
     [SerializeField] float ejectRoundForce = 134f;
+
+    [Header("Recoil Settings")]
+	[SerializeField] float recoilStrenght = -4f;
+    
     [SerializeField] Vector3 recoilDir = Vector3.back;
     [SerializeField] float weaponRecoilForce = 0.1f;
 
-    
-    [SerializeField]float minBoltPos = 0f;
-    [SerializeField]float maxBoltPos = 1f;
-
-    [SerializeField] float ejectRoundAtBoltProgress = 0.85f;
-    [SerializeField] float holdBoltOpenAt = 0.9f;
-
-#region firing
+    [Header("Firing")]
     [SerializeField] Transform barrellExit;
     [SerializeField] float weaponSpread;
     [SerializeField] float weaponSpreadDistance;
 
-#endregion
-    // Start is called before the first frame update
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -70,21 +71,22 @@ public class OpenBolt : MonoBehaviour, IBolt
             maxBoltPos=0.9f;
             minBoltPos = 0.9f;
         }
-
-        if(boltProgress == 1){
+    
+        if(boltProgress > 0.9f){
             holdingOpen = true;
+            canTakeRound = true;
         }
         //Feed the round when bolt progress is .8-.85
-        if(boltProgress < ejectRoundAtBoltProgress && !hasRound && canTakeRound){
+        if(boltProgress > collectRoundBeforeBoltProgress && boltProgress < ejectRoundAtBoltProgress && !hasRound && canTakeRound){
 
             if(weapon.getMagazine()!=null)
                 round = weapon.getMagazine().FeedRound();
 
             if(round!=null){
-                canTakeRound = false;
+                
                 hasRound = true;
             }
-
+            canTakeRound = false;
         }
         //print(boltProgress);
         if(isRecoiling){
@@ -117,7 +119,6 @@ public class OpenBolt : MonoBehaviour, IBolt
     public void EjectRound(){
         //print("Ejecting Round");
         if(round==null){
-            canTakeRound = true;
             return;
         }
         round.GetComponent<CapsuleCollider>().enabled = true;
@@ -125,11 +126,11 @@ public class OpenBolt : MonoBehaviour, IBolt
         //round.GetComponent<Ammo>().isInMag = false;
         round.transform.parent = null;
         //done Add force away from the saiga transform
-        round.GetComponent<Rigidbody>().AddForce(gameObject.transform.up*roundLaunchMultiplier + Vector3.right*Random.Range(10,40));
+        round.GetComponent<Rigidbody>().AddForce(gameObject.transform.up*roundLaunchMultiplier + ejectRoundsToward*Random.Range(10,40));
+        round.GetComponent<Rigidbody>().AddTorque(gameObject.transform.up*roundLaunchMultiplier + ejectRoundRotate*Random.Range(10,40));
         StartCoroutine(round.GetComponent<Ammo>().EjectedRound(3f));
         round = null;
         hasRound = false;
-        canTakeRound = true;
         weapon.getMagazine().UpdateBulletPosition();
     }
 
@@ -161,6 +162,7 @@ public class OpenBolt : MonoBehaviour, IBolt
     }
 
     public int ShootBullet(){
+        canTakeRound = false;
         if(round==null)return -1;
         Ammo ammocmpt = round.GetComponent<Ammo>();
         if(ammocmpt.isSpent)return -1;

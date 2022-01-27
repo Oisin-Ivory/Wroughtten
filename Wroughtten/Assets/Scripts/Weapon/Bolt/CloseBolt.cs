@@ -5,51 +5,51 @@ using UnityEngine;
 public class CloseBolt : MonoBehaviour, IBolt
 {
     //1 is open - 0 is closed
+    [Header("Bolt Settings")]
+    [SerializeField] Weapon weapon;
     [SerializeField] float boltProgress = 0f;
     [SerializeField] public float boltSpeedModifier = 2f;
-
-    [SerializeField] Transform positionClosed,positionOpened;
     [SerializeField] float boltSpringStrenght = 1f;
+    [SerializeField] float ejectRoundAtBoltProgress = 0.85f;
+    [SerializeField] float feedRoundAfterBoltProgress = 0.7f;
+    float minBoltPos = 0f;
+    float maxBoltPos = 1f;
+    [SerializeField] float holdBoltOpenAt = 0.9f;
+    [SerializeField] public bool autoEjectClip = false;
+    [Header("Bolt & Round Positions")]
 
+    [SerializeField] Transform positionClosed;
+    [SerializeField] Transform positionOpened;
+    
+    [SerializeField] GameObject roundPosition;
+    [Header("Bolt States")]
     [SerializeField] bool isLocked = false;
     [SerializeField] bool isHeld = false;
-
     [SerializeField] bool willHoldOpenOnEmpty = true;  
     [SerializeField] bool lockBoltOnEmptyMag = true;
     [SerializeField] public bool holdingOpen = false;
     [SerializeField] public bool freezeBolt = false;
+    [SerializeField] bool isRecoiling = false;
 
-    //Ammo
+    [Header("Round Settings")]
+    [SerializeField] GameObject round;
     [SerializeField] bool canTakeRound = false;
     [SerializeField] bool hasRound = false;
     [SerializeField] float roundLaunchMultiplier = 134f;
-    [SerializeField] GameObject round;
-    [SerializeField] GameObject roundPosition;
-
-    //MagazineReference
-    [SerializeField] Weapon weapon;
-
-    [SerializeField] bool isRecoiling = false;
-	[SerializeField] float recoilStrenght = -4f;
     [SerializeField] Vector3 ejectRoundsToward = Vector3.up;
     [SerializeField] Vector3 ejectRoundRotate = Vector3.up;
     [SerializeField] float ejectRoundForce = 134f;
+
+    [Header("Recoil Settings")]
+    [SerializeField] float recoilStrenght = -4f;
     [SerializeField] Vector3 recoilDir = Vector3.back;
     [SerializeField] float weaponRecoilForce = 0.1f;
+    [Header("Firing")]
     
-    float minBoltPos = 0f;
-    float maxBoltPos = 1f;
-
-    [SerializeField] float ejectRoundAtBoltProgress = 0.85f;
-    [SerializeField] float holdBoltOpenAt = 0.9f;
-    [SerializeField] public bool autoEjectClip = false;
-
-#region firing
     [SerializeField] Transform barrellExit;
     [SerializeField] float weaponSpread;
     [SerializeField] float weaponSpreadDistance;
 
-#endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -88,7 +88,7 @@ public class CloseBolt : MonoBehaviour, IBolt
             }
         }
         //Feed the round when bolt progress is .8-.85
-        if(boltProgress < ejectRoundAtBoltProgress && !hasRound && canTakeRound){
+        if((boltProgress < ejectRoundAtBoltProgress) && (boltProgress > feedRoundAfterBoltProgress) && !hasRound && canTakeRound){
 
             if(weapon.getMagazine()!=null)
                 round = weapon.getMagazine().FeedRound();
