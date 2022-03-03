@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7612848364810320457}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Storepos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7762049340898741564}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Storepos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 2095023824490765326}
   - component: {fileID: 4998806474802288783}
   - component: {fileID: 1212786493592547841}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,9 +158,9 @@ GameObject:
   - component: {fileID: 2389607800621531426}
   - component: {fileID: 2853425247434281943}
   - component: {fileID: 2605869543366156613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PPSHMag
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

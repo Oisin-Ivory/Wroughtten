@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1966559977031969865}
   - component: {fileID: 6974512949806434903}
   - component: {fileID: 2145568389222069554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4419792897319393180}
   - component: {fileID: 4897620606635806588}
   - component: {fileID: 8784354087946779352}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Casing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1380124988449410909}
   - component: {fileID: 2952116364172858345}
   - component: {fileID: 5138325643321217391}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 7.62x39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,6 +223,7 @@ MonoBehaviour:
   compAmmoTags:
   - "7.62\xD739mm"
   - SKSClip
+  recoilForceMultiplier: 1
 --- !u!54 &3944547615575530269
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -289,7 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3532634442009094519}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

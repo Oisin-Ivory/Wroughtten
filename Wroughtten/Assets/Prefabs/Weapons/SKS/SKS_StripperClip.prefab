@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 685495106494480624}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoStorePos (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7572447154690257342}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LoadingPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3130776973830520506}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoStorePos (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2690597175148273608}
   - component: {fileID: 7483474080780708410}
   - component: {fileID: 2343497782408942659}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stripper_Clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4855950292993740045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoStorePos (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3712713175917776615}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoStorePos (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 5425301801435976047}
   - component: {fileID: 8082625864205473931}
   - component: {fileID: 6025544391033543456}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SKS_StripperClip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2362852318953339181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoStorePos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 380351277092654822}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoStorePos (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8933371874377914557}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoStorePos (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543826952769746556}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoStorePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6589572220791229184}
   - component: {fileID: 8668581305233124799}
   - component: {fileID: 43853059350355553}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Sights
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,9 +93,9 @@ GameObject:
   - component: {fileID: 1621440786049439774}
   - component: {fileID: 1905517477920908236}
   - component: {fileID: 7446051890218106058}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt 1
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,9 +175,9 @@ GameObject:
   - component: {fileID: 4901342727286236959}
   - component: {fileID: 4112648744870393147}
   - component: {fileID: 4854997508890128999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,9 +255,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8197458503747630895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletPos
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,9 +285,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7353928081104491280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttachPoint
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,9 +315,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3979997941754088081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoltPosition (1)
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,9 +347,9 @@ GameObject:
   - component: {fileID: 2295241590566732038}
   - component: {fileID: 8985614650745738493}
   - component: {fileID: 2908486727760814134}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front_Sights_Pin
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -433,9 +433,9 @@ GameObject:
   - component: {fileID: 3816669687150100284}
   - component: {fileID: 6812276131651736121}
   - component: {fileID: 8848680320629325746}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PPSH-41
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,9 +560,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 899616168940909482}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrell
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -592,9 +592,9 @@ GameObject:
   - component: {fileID: 168765106474394938}
   - component: {fileID: 6557210039064710087}
   - component: {fileID: 7982965397055665970}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front_Sights_Cover
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -674,9 +674,9 @@ GameObject:
   - component: {fileID: 5945387346440024600}
   - component: {fileID: 7887451685558160366}
   - component: {fileID: 2073570356102832083}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt_Handle
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,9 +754,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5320145545919418618}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sights
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -788,9 +788,9 @@ GameObject:
   - component: {fileID: 7710375185688023771}
   - component: {fileID: 2877359266322757483}
   - component: {fileID: 1792225877337509109}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stock
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -870,9 +870,9 @@ GameObject:
   - component: {fileID: 4666963049296323366}
   - component: {fileID: 658524866532285115}
   - component: {fileID: 3589729189136663471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagazineAcceptor
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -935,9 +935,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8640086122466436531}
   - component: {fileID: 3094725024193898037}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -971,11 +971,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1f97c5517fa174da770a3daff2eb07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 8570165725325231585}
   boltProgress: 0
   boltSpeedModifier: 2
   boltSpringStrenght: 12
   ejectRoundAtBoltProgress: 0.85
-  collectRoundBeforeBoltProgress: 0.7
+  collectRoundBeforeBoltProgress: 0.4
   minBoltPos: 0
   maxBoltPos: 1
   positionClosed: {fileID: 2631123528122861645}
@@ -993,7 +994,6 @@ MonoBehaviour:
   ejectRoundsToward: {x: 0, y: 1, z: 0}
   ejectRoundRotate: {x: 0, y: 0.25, z: 0}
   ejectRoundForce: 134
-  weapon: {fileID: 8570165725325231585}
   recoilStrenght: -12
   recoilDir: {x: 0, y: 0, z: -1}
   weaponRecoilForce: 0.1
@@ -1009,9 +1009,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2366558716583287828}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front_Sights
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1043,9 +1043,9 @@ GameObject:
   - component: {fileID: 4416830098109368989}
   - component: {fileID: 8783281540977565944}
   - component: {fileID: 5843053408928630177}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Back_Cover
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1123,9 +1123,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2631123528122861645}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoltPosition
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1153,9 +1153,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7423835186914865094}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PPSH_41
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1191,9 +1191,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1965623739776521240}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoltPositions
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,9 +1225,9 @@ GameObject:
   - component: {fileID: 3954697469029095544}
   - component: {fileID: 5071652914038932331}
   - component: {fileID: 892268916035768060}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

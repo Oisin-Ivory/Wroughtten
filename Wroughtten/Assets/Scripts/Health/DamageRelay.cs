@@ -10,4 +10,8 @@ public class DamageRelay : MonoBehaviour
      public void TakeDamage(float damage){
         health.TakeDamage(damage*damageMultiplier);
     }
+
+    public Health GetHealth(){
+        return health;
+    }
 }

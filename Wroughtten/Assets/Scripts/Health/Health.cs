@@ -13,6 +13,10 @@ public class Health : MonoBehaviour
             Event.Invoke();
     }
 
+    public float getHealth(){
+        return health;
+    }
+
     public bool isDead(){
         return health<=0;
     }

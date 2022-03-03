@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 5137431124371152307}
   - component: {fileID: 4590577294944506589}
   - component: {fileID: 7860282246783553646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 7.62x39
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,6 +58,7 @@ MonoBehaviour:
   isInMag: 0
   compAmmoTags:
   - 7.62x39
+  recoilForceMultiplier: 1
 --- !u!114 &443134033038029113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +127,7 @@ GameObject:
   - component: {fileID: 2898829652860832888}
   - component: {fileID: 5004644045222878263}
   - component: {fileID: 2892468413677500816}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bullet762x39
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -113,13 +113,17 @@ public class Hand : MonoBehaviour
         isLocked = false;
     }
 
-    public IEnumerator lerpToPositionReload(Vector3 pos, float time){
+    public IEnumerator lerpToPositionReload(Reloadable reloadable, float time){
+        Vector3 pos = Vector3.zero;
         if(isLocked)yield break;
         isLocked = true;
         float timeSpent = 0;
         while(timeSpent<time){
             //print("timeSpent: "+timeSpent);
             timeSpent+=Time.deltaTime;
+            if(handObject!=null){
+                pos = reloadable.getLoadingPosition(handObject.GetComponent<Loadable>()).position;
+            }
             gameObject.transform.position = Vector3.Lerp(gameObject.transform.position,pos,timeSpent/time);
             yield return true;        
         }

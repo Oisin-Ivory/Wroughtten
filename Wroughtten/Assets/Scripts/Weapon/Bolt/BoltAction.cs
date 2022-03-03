@@ -194,9 +194,12 @@ public class BoltAction : MonoBehaviour, IBolt
                     if(hitGameObject==null) return 1;
 
                     if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
-
                       health.TakeDamage(round.GetComponent<Ammo>().ammoDamage);
+                      if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
+                          ai.ForceCombatAndTarget(AIState.COMBAT,weapon.transform.parent.parent.parent.parent.gameObject);
+                      }
                     }
+                    
                 }
             }
             #endregion

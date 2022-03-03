@@ -23,7 +23,7 @@ public class Player_Mouse_Look : MonoBehaviour
 
     void Update()
     {
-        if(Cursor.lockState==CursorLockMode.Locked && (!Input.GetButton("Jump")||Input.GetKeyDown("r"))){
+        if(Cursor.lockState==CursorLockMode.Locked && !(Input.GetKey(KeyCode.V) || Input.GetKey(KeyCode.R))){
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 

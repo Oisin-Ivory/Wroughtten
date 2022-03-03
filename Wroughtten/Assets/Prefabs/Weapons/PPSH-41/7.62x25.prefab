@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8386662015080725104}
   - component: {fileID: 6290752361609290352}
   - component: {fileID: 9092568742499873321}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 5137431124371152307}
   - component: {fileID: 4590577294944506589}
   - component: {fileID: 7860282246783553646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 7.62x25
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

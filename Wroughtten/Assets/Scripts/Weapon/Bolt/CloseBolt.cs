@@ -87,6 +87,10 @@ public class CloseBolt : MonoBehaviour, IBolt
                 isLocked = true;
             }
         }
+
+        if(boltProgress == 1){
+            canTakeRound = true;
+        }
         //Feed the round when bolt progress is .8-.85
         if((boltProgress < ejectRoundAtBoltProgress) && (boltProgress > feedRoundAfterBoltProgress) && !hasRound && canTakeRound){
 
@@ -131,7 +135,7 @@ public class CloseBolt : MonoBehaviour, IBolt
     public void EjectRound(){
         //print("Ejecting Round");
         if(round==null){
-            canTakeRound = true;
+            //canTakeRound = true;
             return;
         }
         round.GetComponent<CapsuleCollider>().enabled = true;
@@ -143,7 +147,7 @@ public class CloseBolt : MonoBehaviour, IBolt
         StartCoroutine(round.GetComponent<Ammo>().EjectedRound(3f));
         round = null;
         hasRound = false;
-        canTakeRound = true;
+        //canTakeRound = true;
         weapon.getMagazine().UpdateBulletPosition();
     }
 
@@ -168,11 +172,16 @@ public class CloseBolt : MonoBehaviour, IBolt
 
 
     public int FireRound(){
-        if(round==null)return -1;
+        if(round==null){
+            if(boltProgress == 0) canTakeRound = false;
+            return -1;
+            }
         Ammo ammocmpt = round.GetComponent<Ammo>();
-        if(ammocmpt.isSpent)return -1;
+        if(ammocmpt.isSpent){
+            return -1;
+            }
 
-        if(boltProgress!=0) return 0;
+        if(boltProgress!=0){return 0;}
     
         if(ammocmpt.Shoot()){
             weapon.RecoilWeapon(recoilDir,weaponRecoilForce*ammocmpt.recoilForceMultiplier);
@@ -197,17 +206,23 @@ public class CloseBolt : MonoBehaviour, IBolt
 
                     GameObject hitGameObject = hit.transform.gameObject;
 
-                    if(hitGameObject==null) return 1;
+                    if(hitGameObject==null){
+                        canTakeRound = true;
+                        return 1;
+                    }
 
                     if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
-
                       health.TakeDamage(round.GetComponent<Ammo>().ammoDamage);
+                      if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
+                          ai.ForceCombatAndTarget(AIState.COMBAT,weapon.transform.parent.parent.parent.parent.gameObject);
+                      }
                     }
                 }
             }
             RecoilBolt();
             #endregion
         }
+        canTakeRound = true;
         return 1;
     }
 

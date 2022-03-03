@@ -63,7 +63,7 @@ public class HandManager : MonoBehaviour
             
             if(timeSinceReload<1f)return;
             Debug.Log("Starting Coroutine");
-            StartCoroutine(hands[1].lerpToPositionReload(reloadablescript.getLoadingPosition(itemToLoad).position,0.25f));
+            StartCoroutine(hands[1].lerpToPositionReload(reloadablescript,0.25f));
             timeSinceReload = 0;
         }
         

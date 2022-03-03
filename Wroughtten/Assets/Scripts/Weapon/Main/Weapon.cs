@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
     }
 
     public void HandleInputs(){
-        weaponBolt.setHeld(Input.GetButton("Jump"));
+        weaponBolt.setHeld(Input.GetKey(KeyCode.V));
         if(weaponBolt.getHeld()){
             weaponBolt.UpdateBoltPosition(Input.GetAxis("Mouse X"),Input.GetAxis("Mouse Y"));
             if(clipAcceptor!=null){

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3147958741011771502}
   - component: {fileID: 8278502025048956053}
   - component: {fileID: 3007938817456570751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SKS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,7 @@ MonoBehaviour:
   weaponFireSelect: {fileID: 3007938817456570751}
   weaponPosition: {x: 0.146, y: -0.147, z: 0.426}
   weaponAdsPosition: {x: 0, y: -0.106, z: 0.36}
+  weaponOffsetPosition: {x: 0, y: 0, z: 0}
   detachableMagazine: 0
   clipAcceptor: {fileID: 3137153580081078961}
   magAcceptor: {fileID: 0}
@@ -152,7 +153,7 @@ GameObject:
   - component: {fileID: 6637582661456519556}
   - component: {fileID: 1624739939248968697}
   - component: {fileID: 5161238290538918480}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8918378917429189926}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Position (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8899196312898180242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Position (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7908236626008585974}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger_Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2909338846023025710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +357,7 @@ GameObject:
   - component: {fileID: 7348789752828145796}
   - component: {fileID: 3825929078717143911}
   - component: {fileID: 5192674734265418262}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cleaning_Rod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +439,7 @@ GameObject:
   - component: {fileID: 4040001873993416352}
   - component: {fileID: 7949542613437144536}
   - component: {fileID: 1260580283099965833}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bayonet_Lug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6557723820539970472}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StripperClipTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4399246510734766873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +584,7 @@ GameObject:
   - component: {fileID: 7766351703510384232}
   - component: {fileID: 8818653401777075635}
   - component: {fileID: 1256226637573501049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Elevation_Adjust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7263780721025421468}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoltClosedPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +696,7 @@ GameObject:
   - component: {fileID: 1036939782712540319}
   - component: {fileID: 8783882693709042440}
   - component: {fileID: 7443220243906010763}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 705625493933554951}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5362548504729273668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RoundPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +844,7 @@ GameObject:
   - component: {fileID: 8539992815082207557}
   - component: {fileID: 7403309021300285132}
   - component: {fileID: 3909590053777254966}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger_Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +924,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2461935129156392282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Position (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,7 +954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7229709043287728119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Position (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -983,7 +984,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222331984970946218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Position (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1016,7 @@ GameObject:
   - component: {fileID: 459595960472155233}
   - component: {fileID: 4614410725140257200}
   - component: {fileID: 3869493397954809042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gas_Connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1095,7 +1096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1708541760670374257}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RoundEjection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1127,7 +1128,7 @@ GameObject:
   - component: {fileID: 1526906469639437326}
   - component: {fileID: 3292964570065710233}
   - component: {fileID: 8941071269128624757}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1207,7 +1208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5805738167630052682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rear_Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1599648713152772450}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Position (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1271,7 +1272,7 @@ GameObject:
   - component: {fileID: 2567008883590254566}
   - component: {fileID: 2519141934353567935}
   - component: {fileID: 2385389038051305464}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gas_Rod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1351,7 +1352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291239433035871599}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagazineAmmoPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1389,7 +1390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7263663861126773777}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1421,7 +1422,7 @@ GameObject:
   - component: {fileID: 7471004498081870592}
   - component: {fileID: 6426927517234190524}
   - component: {fileID: 5271077999439143154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front_Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1501,7 +1502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6420627472508656566}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoltOpenedPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,7 +1532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8106333339871346122}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AimPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1566,7 +1567,7 @@ GameObject:
   - component: {fileID: 6860617659069237839}
   - component: {fileID: 3137153580081078961}
   - component: {fileID: 4739855403075178020}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1651,31 +1652,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148eb32b0a6b0cc4eb0e16b425fe6d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 6449978218986021420}
   boltProgress: 0
   boltSpeedModifier: 2
+  boltSpringStrenght: -3
+  ejectRoundAtBoltProgress: 0.85
+  feedRoundAfterBoltProgress: 0.7
+  holdBoltOpenAt: 0.9
+  autoEjectClip: 0
   positionClosed: {fileID: 7263780721025421468}
   positionOpened: {fileID: 6420627472508656566}
-  boltSpringStrenght: -3
+  roundPosition: {fileID: 4274984385651638762}
   isLocked: 0
   isHeld: 0
   willHoldOpenOnEmpty: 1
   lockBoltOnEmptyMag: 1
   holdingOpen: 0
   freezeBolt: 0
+  isRecoiling: 0
+  round: {fileID: 0}
   canTakeRound: 0
   hasRound: 0
   roundLaunchMultiplier: 134
-  round: {fileID: 0}
-  roundPosition: {fileID: 4274984385651638762}
-  weapon: {fileID: 6449978218986021420}
-  isRecoiling: 0
-  recoilStrenght: -4
   ejectRoundsToward: {x: 0, y: 1, z: 0}
   ejectRoundRotate: {x: 0, y: 0, z: 0}
   ejectRoundForce: 134
-  ejectRoundAtBoltProgress: 0.85
-  holdBoltOpenAt: 0.9
-  autoEjectClip: 0
+  recoilStrenght: -4
+  recoilDir: {x: 0, y: 0, z: -1}
+  weaponRecoilForce: 0.1
   barrellExit: {fileID: 7263663861126773777}
   weaponSpread: 1
   weaponSpreadDistance: 10
@@ -1719,7 +1723,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7387893695531370308}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Position (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1751,7 +1755,7 @@ GameObject:
   - component: {fileID: 1997163969147711427}
   - component: {fileID: 8513844308901796094}
   - component: {fileID: 2742287891368036653}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt_Housing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1831,7 +1835,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369614104461834498}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mag_LoadingPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1863,7 +1867,7 @@ GameObject:
   - component: {fileID: 6315942379470059317}
   - component: {fileID: 1286541852819301718}
   - component: {fileID: 8804259749999620131}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1947,7 +1951,7 @@ GameObject:
   - component: {fileID: 3658906475559194179}
   - component: {fileID: 9211584262050976329}
   - component: {fileID: 1274606991010485565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

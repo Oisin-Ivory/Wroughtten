@@ -11,7 +11,7 @@ public class OpenBolt : MonoBehaviour, IBolt
     [SerializeField] public float boltSpeedModifier = 2f;
     [SerializeField] float boltSpringStrenght = 2f;
     [SerializeField] float ejectRoundAtBoltProgress = 0.85f;
-    [SerializeField] float collectRoundBeforeBoltProgress = 0.70f;
+    [SerializeField] float collectRoundBeforeBoltProgress = 0.40f;
     [SerializeField]float minBoltPos = 0f;
     [SerializeField]float maxBoltPos = 1f;
 
@@ -72,7 +72,7 @@ public class OpenBolt : MonoBehaviour, IBolt
             minBoltPos = 0.9f;
         }
     
-        if(boltProgress > 0.9f){
+        if(boltProgress == 1f){
             holdingOpen = true;
             canTakeRound = true;
         }
@@ -86,7 +86,6 @@ public class OpenBolt : MonoBehaviour, IBolt
                 
                 hasRound = true;
             }
-            canTakeRound = false;
         }
         //print(boltProgress);
         if(isRecoiling){
@@ -94,13 +93,17 @@ public class OpenBolt : MonoBehaviour, IBolt
                 isHeld = true;
                 UpdateBoltPosition(0,recoilStrenght);
             }else{
+                
                 isRecoiling=false;
+                holdingOpen = true;
+                canTakeRound = true;
             }
 			//UpdateCanTakeRound();
             //return;
         }
 
-        if(boltProgress == 0 && hasRound){
+        if(boltProgress == 0){
+            canTakeRound = false;
             ShootBullet();
         }
 
@@ -162,7 +165,6 @@ public class OpenBolt : MonoBehaviour, IBolt
     }
 
     public int ShootBullet(){
-        canTakeRound = false;
         if(round==null)return -1;
         Ammo ammocmpt = round.GetComponent<Ammo>();
         if(ammocmpt.isSpent)return -1;
@@ -189,14 +191,16 @@ public class OpenBolt : MonoBehaviour, IBolt
                 Debug.DrawRay(barrellExit.transform.position,targetHitPoint, Color.red,Mathf.Infinity);
 
                 if(Physics.Raycast(barrellExit.transform.position,targetHitPoint, out hit, ammocmpt.range)){
-
+                    print("Hit: " + hit.collider.gameObject.name);
                     GameObject hitGameObject = hit.transform.gameObject;
 
                     if(hitGameObject==null) return 1;
-
+                    //print("getting damage relat");
                     if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
-
-                      health.TakeDamage(round.GetComponent<Ammo>().ammoDamage);
+                        health.TakeDamage(round.GetComponent<Ammo>().ammoDamage);
+                        if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
+                          ai.ForceCombatAndTarget(AIState.COMBAT,weapon.transform.parent.parent.parent.parent.gameObject);
+                        }
                     }
                 }
             }

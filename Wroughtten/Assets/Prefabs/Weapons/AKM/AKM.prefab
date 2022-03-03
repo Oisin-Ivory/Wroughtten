@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6648356713934049082}
   - component: {fileID: 1565006840688544532}
   - component: {fileID: 1288466938829751349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GasTube
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,9 +93,9 @@ GameObject:
   - component: {fileID: 4115626989397893467}
   - component: {fileID: 8970973655689678185}
   - component: {fileID: 269046039074630256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagazineAcceptor
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,9 +159,9 @@ GameObject:
   - component: {fileID: 2935270114495911977}
   - component: {fileID: 7180338356240071189}
   - component: {fileID: 8677830398047381736}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrell 1
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,9 +241,9 @@ GameObject:
   - component: {fileID: 111441573798000011}
   - component: {fileID: 845667587164546861}
   - component: {fileID: 4934039581859942889}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt_Handle
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,9 +321,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3451786841308593762}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarrellExit
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,9 +351,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2273527540508319324}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RoundPosition
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -383,9 +383,9 @@ GameObject:
   - component: {fileID: 6813197670747556037}
   - component: {fileID: 2038330813803101910}
   - component: {fileID: 7969455775295570200}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FrontSight
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -465,9 +465,9 @@ GameObject:
   - component: {fileID: 6905615376415537616}
   - component: {fileID: 6451138741668632341}
   - component: {fileID: 6117141639785140610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stock
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -551,9 +551,9 @@ GameObject:
   - component: {fileID: 2978832521710654566}
   - component: {fileID: 982868345754164088}
   - component: {fileID: 6449973500526073750}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AKM
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -687,9 +687,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3828577887754863184}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Open
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -717,9 +717,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3707294043380415394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrell
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -752,9 +752,9 @@ GameObject:
   - component: {fileID: 1905577852688667525}
   - component: {fileID: 4737744469507565004}
   - component: {fileID: 1718193609521615857}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt 1
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -834,9 +834,9 @@ GameObject:
   - component: {fileID: 1817267725427205297}
   - component: {fileID: 5691802396454513612}
   - component: {fileID: 6408332515414621865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Handguard
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -914,9 +914,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6811660554576900556}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt Positions
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -947,9 +947,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4617016861205100120}
   - component: {fileID: 5139429025100308479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bolt
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -988,6 +988,7 @@ MonoBehaviour:
   boltSpeedModifier: 2
   boltSpringStrenght: 5
   ejectRoundAtBoltProgress: 0.85
+  feedRoundAfterBoltProgress: 0.7
   holdBoltOpenAt: 0.9
   autoEjectClip: 0
   positionClosed: {fileID: 2668903270612357728}
@@ -1024,9 +1025,9 @@ GameObject:
   - component: {fileID: 6708389925340476549}
   - component: {fileID: 3391001385231494331}
   - component: {fileID: 334493765728952989}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DustCover
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1104,9 +1105,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2668903270612357728}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Closed
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1136,9 +1137,9 @@ GameObject:
   - component: {fileID: 3271561983488106584}
   - component: {fileID: 6885739162141289746}
   - component: {fileID: 3485721335431178280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1218,9 +1219,9 @@ GameObject:
   - component: {fileID: 3383744445144887612}
   - component: {fileID: 1653138564650162049}
   - component: {fileID: 2575932796850396065}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grip
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1300,9 +1301,9 @@ GameObject:
   - component: {fileID: 7573937829661031963}
   - component: {fileID: 2898370316962773022}
   - component: {fileID: 4864643300579486616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SightRear
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1380,9 +1381,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8537783933582913173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagAttach
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

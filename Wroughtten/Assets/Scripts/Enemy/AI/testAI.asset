@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8109f1d1a21875045b10fc44efc355b7, type: 3}
+  m_Name: testAI
+  m_EditorClassIdentifier: 
+  enemyWeaponAccuracy: 1
+  maxAttackDistance: 25
+  useCover: 1
+  coverState: 2
+  maxCoverDistance: 20.19
+  seekCoverBelowHealth: 20
+  minDistanceIgnoreCover: 8.4
+  hearingDistance: 16
+  viewDistance: 45.1
+  viewAngle: 90
+  targetListTag:
+  - Player
+  - Team1

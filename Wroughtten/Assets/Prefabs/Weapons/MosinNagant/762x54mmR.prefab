@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1107935059289827485}
   - component: {fileID: 3165625044292115809}
   - component: {fileID: 4175888639987426046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 762x54mmR
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,6 +58,7 @@ MonoBehaviour:
   isInMag: 0
   compAmmoTags:
   - "7.62\xD754mmR"
+  recoilForceMultiplier: 1
 --- !u!54 &9164519764094134244
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,7 +127,7 @@ GameObject:
   - component: {fileID: 3370432442769991645}
   - component: {fileID: 1475375648459423926}
   - component: {fileID: 7233552062037080900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ammo762x54mmR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
