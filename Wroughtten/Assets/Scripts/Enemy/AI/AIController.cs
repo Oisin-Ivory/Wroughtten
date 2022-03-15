@@ -34,10 +34,45 @@ public class AIController : MonoBehaviour
     [SerializeField] LayerMask mask;
     private float timeSinceLastShot = Mathf.Infinity;
     [SerializeField] float timeSinceKnowledgeOfTarget = 0f;
-    void Start()
+
+    
+    [Header("Enemy Pathing")]
+
+    [SerializeField] private Path path;
+    [SerializeField] private int waypointIndex = 0;
+    [SerializeField] private float timeSpentWaiting = 0f;
+    [SerializeField] private Waypoint currentWaypoint;
+
+
+    private void Patrol(){
+        if(Vector3.Distance(transform.position,currentWaypoint.transform.position) > 1f){
+            //print("not close");
+            agent.SetDestination(currentWaypoint.transform.position);
+        }else{
+            //print("is close");
+            timeSpentWaiting += Time.deltaTime;
+            if(timeSpentWaiting > currentWaypoint.waitTime){
+                print("done waiting");
+                System.Tuple<Waypoint, int> nextWP = path.GetNextWaypoint(waypointIndex);
+                currentWaypoint = nextWP.Item1;
+                waypointIndex = nextWP.Item2;
+                timeSpentWaiting = 0;
+            }
+        }
+    }
+
+
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
+    }
+
+    void Start(){
+        currentWaypoint = path.GetWaypoint(waypointIndex);
+        state = initialState;
+        combatState = initialcombatState;
+        coverState = initialcoverState;
     }
 
     // Update is called once per frame
@@ -51,7 +86,7 @@ public class AIController : MonoBehaviour
         if(state != AIState.COMBAT){
             SearchForTarget();
             if(state == AIState.PATROL){
-
+                Patrol();
             }
         }
 

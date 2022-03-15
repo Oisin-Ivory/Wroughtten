@@ -1,0 +1,313 @@
+Using pre-set license
+Built from '2021.1/staging' branch; Version is '2021.1.24f1 (6667702a1e7c) revision 6711152'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19044.1586; Version 2009; 64bit' Language: 'en' Physical Memory: 32677 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.1.24f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/RTX2060OG/Documents/WIT_Work/Wroughtten/Wroughtten/Wroughtten
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+49966
+Successfully changed project path to: C:/Users/RTX2060OG/Documents/WIT_Work/Wroughtten/Wroughtten/Wroughtten
+C:/Users/RTX2060OG/Documents/WIT_Work/Wroughtten/Wroughtten/Wroughtten
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 64.17 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.1.24f1 (6667702a1e7c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/RTX2060OG/Documents/WIT_Work/Wroughtten/Wroughtten/Wroughtten/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2060 (ID=0x1f08)
+    Vendor:   NVIDIA
+    VRAM:     5980 MB
+    Driver:   30.0.15.1123
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56464
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001359 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 64.47 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.896 seconds
+Domain Reload Profiling:
+	ReloadAssembly (896ms)
+		BeginReloadAssembly (48ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (352ms)
+			LoadAssemblies (47ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (124ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (170ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (65ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (75ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.003726 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\RTX2060OG\Documents\WIT_Work\Wroughtten\Wroughtten\Wroughtten\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\RTX2060OG\Documents\WIT_Work\Wroughtten\Wroughtten\Wroughtten\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.46 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.885 seconds
+Domain Reload Profiling:
+	ReloadAssembly (886ms)
+		BeginReloadAssembly (119ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (15ms)
+		EndReloadAssembly (722ms)
+			LoadAssemblies (71ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (259ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (282ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (55ms)
+				ProcessInitializeOnLoadAttributes (214ms)
+				ProcessInitializeOnLoadMethodAttributes (4ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.46 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2983 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.9 MB.
+System memory in use after: 107.1 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 3430.
+Total: 2.567700 ms (FindLiveObjects: 0.200600 ms CreateObjectMapping: 0.091500 ms MarkObjects: 2.228600 ms  DeleteObjects: 0.046300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/Animation_Scene.unity
+  artifactKey: Guid(aa4bc329d2b0ab445a7403389e25dcae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Animation_Scene.unity using Guid(aa4bc329d2b0ab445a7403389e25dcae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dde785576d39ef75189858b1af4c2a7e') in 0.013325 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 26.674647 seconds.
+  path: Assets/Models/Enemies
+  artifactKey: Guid(4862d763ed8c0bf4b99fa1c7fe313910) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies using Guid(4862d763ed8c0bf4b99fa1c7fe313910) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '980c4de78197d2f49010f733b1a470e2') in 0.004832 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.931189 seconds.
+  path: Assets/Models/Enemies/Base
+  artifactKey: Guid(db21a8ad84168e64a9b54b0204d86d74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base using Guid(db21a8ad84168e64a9b54b0204d86d74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4cd6b69a8b4d00db12c48c52ba36447') in 0.004722 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2206.501144 seconds.
+  path: Assets/Models/Enemies/Base/Base.fbx
+  artifactKey: Guid(4600108cbc5c1414da12d94c753e9a44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Base.fbx using Guid(4600108cbc5c1414da12d94c753e9a44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19e7acf13805b5d6aa3b4510c92a9536') in 0.216702 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3026.331151 seconds.
+  path: Assets/Models/Enemies/Base/Head.mat
+  artifactKey: Guid(8648406ce77cc704e858ee85ffafba75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.mat using Guid(8648406ce77cc704e858ee85ffafba75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e12fef6346757b8351fd32c104e16b0') in 0.012366 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 57.084366 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac4ea8de430defe1d846fb33b49a0c53') in 0.036237 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 697.120788 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f4bea91349310a5d9f1b043fe098e6e') in 0.008999 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 800.534158 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a84643440da88fd4d8e644a12057bb98') in 0.007603 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.203518 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c38f4d543e60a708f5c1fb4b4b999904') in 0.006045 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 596.020780 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbcbb58f86992e10a489a39d3c8662f7') in 0.006990 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 129.585648 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e89dd39a209271d6331f022021186220') in 0.007030 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 47.816593 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f278396410b1cd082abfc56827b361aa') in 0.004839 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 925.214845 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f928b1bf991a4a28a466b1e4cb05b49') in 0.013809 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.508233 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '114aad09a6f0952a688dd03ad17ce536') in 0.004452 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 296.045493 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2333e27c96a5ef07d67f730689ad84b5') in 0.009281 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.833937 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fb1bf850aa5ed714a158605773ec9f0') in 0.006685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 105.780995 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa604ea1f75a30c7e0e4128eb5f681dd') in 0.008406 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.198644 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd47b69eb538eaec214cc08fccb542568') in 0.005987 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 297.801450 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1af1ddfdd1b4b51812579061544b5a4b') in 0.009068 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.467894 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13446cc5e88f9a80128934d608844fc7') in 0.006261 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 337.180524 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f5e2cd0b61b4b40a381b2554748718f') in 0.007767 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.235797 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de3dfadbfdfbcc79196e63791cd027cc') in 0.006492 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 145.014969 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd63c817903f663358b0956a67b6d69ce') in 0.008015 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 22.308020 seconds.
+  path: Assets/Models/Enemies/Base/Head.png
+  artifactKey: Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.png using Guid(4ec770936e37955418411d479b943cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23f120344c7736b7c468dbee95a4875e') in 0.009171 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1986.572004 seconds.
+  path: Assets/Models/Enemies/Base/Enemy.fbx
+  artifactKey: Guid(c79da893e080a18448267d54a4c2bd0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Enemy.fbx using Guid(c79da893e080a18448267d54a4c2bd0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec615cbd85d2b602b2f2eb81f1912902') in 0.053707 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 576.161440 seconds.
+  path: Assets/Models/Enemies/Base/Torso.png
+  artifactKey: Guid(09ab3b328acfdd645939bff943297e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Torso.png using Guid(09ab3b328acfdd645939bff943297e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afb0166b623adb4061dcb0dc1ddbe8d5') in 0.015452 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.055228 seconds.
+  path: Assets/Models/Enemies/Base/Head 1.mat
+  artifactKey: Guid(2c236a2997f33854190013b8287718e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head 1.mat using Guid(2c236a2997f33854190013b8287718e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdb1bf48b996a91f485a16551971d97b') in 0.008443 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Models/Enemies/Base/Head.mat
+  artifactKey: Guid(8648406ce77cc704e858ee85ffafba75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Head.mat using Guid(8648406ce77cc704e858ee85ffafba75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8751be5876d05c239d29e99215e1e6c') in 0.009345 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.541561 seconds.
+  path: Assets/Models/Enemies/Base/Torso.mat
+  artifactKey: Guid(2c236a2997f33854190013b8287718e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Torso.mat using Guid(2c236a2997f33854190013b8287718e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a033446bdc18cd89fbd58da117d06ba4') in 0.008906 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.692015 seconds.
+  path: Assets/Models/Enemies/Base/Torso.png
+  artifactKey: Guid(09ab3b328acfdd645939bff943297e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Enemies/Base/Torso.png using Guid(09ab3b328acfdd645939bff943297e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea09cf5feb388d638a4c44b5dac42290') in 0.009294 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
