@@ -48,6 +48,8 @@ public class OpenBolt : MonoBehaviour, IBolt
     [SerializeField] Transform barrellExit;
     [SerializeField] float weaponSpread;
     [SerializeField] float weaponSpreadDistance;
+    [Header("Sound")]
+    [SerializeField] WeaponSoundManager sound;
 
 
     void Start()
@@ -55,6 +57,7 @@ public class OpenBolt : MonoBehaviour, IBolt
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         weapon.setBolt(this);
+        sound = weapon.gameObject.GetComponent<WeaponSoundManager>();
         //Time.timeScale = 0.1f;
     }   
 
@@ -172,6 +175,7 @@ public class OpenBolt : MonoBehaviour, IBolt
         if(boltProgress!=0) return 0;
 
         if(ammocmpt.Shoot()){
+            sound.ShootAudio(transform.position);
             weapon.RecoilWeapon(recoilDir,weaponRecoilForce*ammocmpt.recoilForceMultiplier);
              #region Raycasting
              RaycastHit hit;
@@ -197,7 +201,7 @@ public class OpenBolt : MonoBehaviour, IBolt
                     if(hitGameObject==null) return 1;
                     //print("getting damage relat");
                     if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
-                        health.TakeDamage(round.GetComponent<Ammo>().ammoDamage);
+                        health.TakeDamage(round.GetComponent<Ammo>().ammoDamage,hit);
                         if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
                           ai.ForceCombatAndTarget(AIState.COMBAT,weapon.transform.parent.parent.parent.parent.gameObject);
                         }

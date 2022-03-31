@@ -8,7 +8,12 @@ public class AIBehaviour : ScriptableObject
     [Header("Enemy Weapons")]
     public float enemyWeaponAccuracy;
     public float maxAttackDistance;
-    
+    public float burstCount;
+    public float timeBeforeBurst;
+    [Header("Enemy Investigate")]
+    public bool willInvestigate;
+    public float timeSpendInvestigate;
+    public float searchRadius;
     [Header("Enemy Cover")]
     public bool useCover;
     public CoverState coverState;

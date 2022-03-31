@@ -17,6 +17,10 @@ public class DetachableMagazine : MonoBehaviour,IMagazine
     [SerializeField]public string[] compAmmoTags;
     public bool isAttached = false;
 
+
+    public int getMagazineCapacity(){
+        return magazineCapacity;
+    }
     void Awake(){
         ammoDeposit = gameObject.GetComponent<BoxCollider>();
     }

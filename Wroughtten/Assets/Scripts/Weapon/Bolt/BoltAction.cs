@@ -45,13 +45,15 @@ public class BoltAction : MonoBehaviour, IBolt
     [SerializeField] Transform barrellExit;
     [SerializeField] float weaponSpread;
     [SerializeField] float weaponSpreadDistance;
-    
+    [Header("Sound")]
+    [SerializeField] WeaponSoundManager sound;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         weapon.setBolt(this);
+        sound = weapon.gameObject.GetComponent<WeaponSoundManager>();
     }
 
     // Update is called once per frame
@@ -169,21 +171,23 @@ public class BoltAction : MonoBehaviour, IBolt
         if(boltProgress!=0) return 0;
 
         if(ammocmpt.Shoot()){
+            sound.ShootAudio(transform.position);
             weapon.RecoilWeapon(recoilDir,weaponRecoilForce*ammocmpt.recoilForceMultiplier);
-             #region Raycasting
-             RaycastHit hit;
-             Vector3 targetHitPoint = Vector3.zero;
-             //Todo add partical and sound effects
-             for(int i = 0; i < ammocmpt.ammoPelletCount ; i++){
-                 Vector3 forwardVector;
-                 if(ammocmpt.spread){
+            #region Raycasting
+            RaycastHit hit;
+            Vector3 targetHitPoint = Vector3.zero;
+            //Todo add partical and sound effects
+            //
+            for(int i = 0; i < ammocmpt.ammoPelletCount ; i++){
+                Vector3 forwardVector;
+                if(ammocmpt.spread){
                     Vector3 deviation3D = Random.insideUnitCircle * weaponSpread; // make some deviation
                     Quaternion rot = Quaternion.LookRotation(Vector3.forward * ammocmpt.range + deviation3D);//get rotation
                     forwardVector = barrellExit.transform.rotation * rot * Vector3.forward; // apply rotation
                 }else{
                     targetHitPoint = barrellExit.transform.rotation * (Vector3.forward * weaponSpreadDistance) +  (Random.insideUnitSphere*weaponSpread);
                     
-                 }
+                }
 
                 Debug.DrawRay(barrellExit.transform.position,targetHitPoint, Color.red,Mathf.Infinity);
 
@@ -194,7 +198,7 @@ public class BoltAction : MonoBehaviour, IBolt
                     if(hitGameObject==null) return 1;
 
                     if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
-                      health.TakeDamage(round.GetComponent<Ammo>().ammoDamage);
+                      health.TakeDamage(round.GetComponent<Ammo>().ammoDamage,hit);
                       if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
                           ai.ForceCombatAndTarget(AIState.COMBAT,weapon.transform.parent.parent.parent.parent.gameObject);
                       }

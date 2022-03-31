@@ -5,7 +5,7 @@ public interface IMagazine {
     void LoadRound(GameObject roundToLoad);
     void UpdateBulletPosition();
     int getBulletCount();
-
+    int getMagazineCapacity();
     bool getCanAcceptAmmo();
     void setCanAcceptAmmo(bool state);
     string[] getCompAmmoTags();

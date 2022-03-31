@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: testWeapon
   m_EditorClassIdentifier: 
   damage: 10
-  spread: 0
-  spreadDistance: 4
+  spread: 1
+  spreadDistance: 2
   rateOfFire: 2
   doesSpread: 0
   range: 200
   pelletCount: 1
+  magCount: 30
+  anim: {fileID: 22100000, guid: ca50b5549dae6bd498dc0868af92e7d3, type: 2}
+  transformPos: {x: 0, y: 0, z: 0}
+  rotationPos: {x: 0, y: 0, z: 0, w: 0}
+  weapon: {fileID: 2002934016189808165, guid: 773324fe6278f6245800d1d781be48ce, type: 3}
+  reloadTime: 0

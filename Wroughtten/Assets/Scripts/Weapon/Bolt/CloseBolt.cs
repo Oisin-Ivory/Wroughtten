@@ -49,6 +49,8 @@ public class CloseBolt : MonoBehaviour, IBolt
     [SerializeField] Transform barrellExit;
     [SerializeField] float weaponSpread;
     [SerializeField] float weaponSpreadDistance;
+    [Header("Sound")]
+    [SerializeField] WeaponSoundManager sound;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +58,7 @@ public class CloseBolt : MonoBehaviour, IBolt
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         weapon.setBolt(this);
+        sound = weapon.gameObject.GetComponent<WeaponSoundManager>();
         //Time.timeScale = 0.1f;
     }   
 
@@ -182,8 +185,9 @@ public class CloseBolt : MonoBehaviour, IBolt
             }
 
         if(boltProgress!=0){return 0;}
-    
+
         if(ammocmpt.Shoot()){
+            sound.ShootAudio(transform.position);
             weapon.RecoilWeapon(recoilDir,weaponRecoilForce*ammocmpt.recoilForceMultiplier);
              #region Raycasting
              RaycastHit hit;
@@ -203,16 +207,18 @@ public class CloseBolt : MonoBehaviour, IBolt
                 Debug.DrawRay(barrellExit.transform.position,targetHitPoint, Color.red,Mathf.Infinity);
 
                 if(Physics.Raycast(barrellExit.transform.position,targetHitPoint, out hit, ammocmpt.range)){
-
+                    
+                    
+ 
                     GameObject hitGameObject = hit.transform.gameObject;
 
-                    if(hitGameObject==null){
-                        canTakeRound = true;
-                        return 1;
-                    }
+                    // if(hitGameObject==null){
+                    //     canTakeRound = true;
+                    //     return 1;
+                    // }
 
                     if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
-                      health.TakeDamage(round.GetComponent<Ammo>().ammoDamage);
+                      health.TakeDamage(round.GetComponent<Ammo>().ammoDamage,hit);
                       if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
                           ai.ForceCombatAndTarget(AIState.COMBAT,weapon.transform.parent.parent.parent.parent.gameObject);
                       }

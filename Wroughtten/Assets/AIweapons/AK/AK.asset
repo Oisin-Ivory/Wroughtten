@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a12ccb28f9954c4f91afb45fe2565a9, type: 3}
+  m_Name: AK
+  m_EditorClassIdentifier: 
+  damage: 13
+  spread: 3
+  spreadDistance: 1
+  rateOfFire: 0.25
+  doesSpread: 0
+  range: 100
+  pelletCount: 1
+  magCount: 30
+  anim: {fileID: 22100000, guid: ca50b5549dae6bd498dc0868af92e7d3, type: 2}
+  transformPos: {x: 0.2, y: -0.088, z: 0.132}
+  rotationPos: {x: 0.5618478, y: 0.36985493, z: 0.40850994, w: 0.61697173}
+  weapon: {fileID: 2002934016189808165, guid: 773324fe6278f6245800d1d781be48ce, type: 3}
+  reloadTime: 2.5

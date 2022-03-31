@@ -8,6 +8,9 @@ public class AIController : MonoBehaviour
     
     [Header("Components ")]
     [SerializeField] GameObject meshGameObj;
+    [SerializeField] GameObject headMeshGameObj;
+    [SerializeField] GameObject torsoMeshGameObj;
+    [SerializeField] GameObject legsMeshGameObj;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Health health;
     
@@ -21,11 +24,13 @@ public class AIController : MonoBehaviour
     [SerializeField] AIState initialState = AIState.IDLE;
     [SerializeField] AICombatState initialcombatState = AICombatState.COVER;
     [SerializeField] AICoverState initialcoverState = AICoverState.NOCOVERPOINT;
+    [SerializeField] Vector3 startingPos;
+    [SerializeField] Quaternion startingRot;
     
     [Header("AI and Weapon Attributes")]
     [SerializeField] AIBehaviour aiBehaviour;
     [SerializeField] AIWeapon aiWeapon;
-    [SerializeField] Transform weaponBarell;
+    [SerializeField] Transform weaponBarrel;
     
     [Header("Targeting and Cover")]
     [SerializeField] GameObject activeTarget;
@@ -34,6 +39,7 @@ public class AIController : MonoBehaviour
     [SerializeField] LayerMask mask;
     private float timeSinceLastShot = Mathf.Infinity;
     [SerializeField] float timeSinceKnowledgeOfTarget = 0f;
+    [SerializeField] float timeSpentInvestigating = 0f;
 
     
     [Header("Enemy Pathing")]
@@ -42,6 +48,23 @@ public class AIController : MonoBehaviour
     [SerializeField] private int waypointIndex = 0;
     [SerializeField] private float timeSpentWaiting = 0f;
     [SerializeField] private Waypoint currentWaypoint;
+
+    [Header("Animation")]
+    [SerializeField] private Animator headAnimator;
+    [SerializeField] private Animator torsoAnimator;
+    [SerializeField] private Animator legsAnimator;
+    [SerializeField] private GameObject weaponBone;
+
+    [Header("Weapon State")]
+    [SerializeField] int maxMag;
+    [SerializeField] int magCount;
+    [SerializeField] float reloadTime = 2f;
+    [SerializeField] float timeSpentReloading = 0f;
+    [SerializeField] bool isReloading = false;
+    [SerializeField] bool isShooting = false;
+    [SerializeField] float burstShotsFired = 0f;
+    [SerializeField] float timeSinceLastBurst = Mathf.Infinity;
+    
 
 
     private void Patrol(){
@@ -66,25 +89,64 @@ public class AIController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
+        startingPos = transform.position;
+
     }
 
     void Start(){
-        currentWaypoint = path.GetWaypoint(waypointIndex);
+        if(path!=null)
+            currentWaypoint = path.GetWaypoint(waypointIndex);
         state = initialState;
         combatState = initialcombatState;
         coverState = initialcoverState;
+
+        maxMag = aiWeapon.magCount;
+        magCount = maxMag;
+
+        torsoAnimator.runtimeAnimatorController = aiWeapon.anim;
+
+        GameObject weapon = Instantiate(aiWeapon.weapon);
+        weapon.transform.parent = weaponBone.transform;
+        weapon.transform.localPosition = aiWeapon.transformPos;
+        weapon.transform.localRotation = aiWeapon.rotationPos;
+        reloadTime = aiWeapon.reloadTime;
+
+        weaponBarrel = weapon.transform.Find("barrel");
     }
 
-    // Update is called once per frame
+    public void Investigate(Vector3 position){
+        Debug.Log(gameObject.name+" Investigating");
+        if(state == AIState.COMBAT) return;
+        if(!aiBehaviour.willInvestigate) return;
+        state = AIState.INVESTIGATE;
+        targetPos = position + Random.insideUnitSphere*aiBehaviour.searchRadius;
+        agent.SetDestination(position);
+    }
+    
     void Update()
     {   
+        legsAnimator.SetBool("moving",agent.velocity.magnitude>0);
         timeSinceLastShot+=Time.deltaTime;
+        timeSinceLastBurst+=Time.deltaTime;
 
         hasLOS = HasLosTarget();
 
+        if(isReloading){
+            timeSpentReloading += Time.deltaTime;
+            if(timeSpentReloading > reloadTime){
+                Reload();
+            }
+        }
 
         if(state != AIState.COMBAT){
             SearchForTarget();
+            if(state==AIState.INVESTIGATE){
+                timeSpentInvestigating+=Time.deltaTime;
+                if(timeSpentInvestigating>aiBehaviour.timeSpendInvestigate){
+                    state = initialState;
+                    agent.SetDestination(startingPos);
+                }
+            }
             if(state == AIState.PATROL){
                 Patrol();
             }
@@ -99,7 +161,7 @@ public class AIController : MonoBehaviour
     private void CombatState(){
         coverState = UpdateCoverState();
         if(Vector3.Distance(transform.position,targetPos) > 1.5f)
-            gameObject.transform.LookAt(targetPos);
+            torsoMeshGameObj.transform.LookAt(targetPos);
         if(hasLOS || Vector3.Distance(activeTarget.transform.position,transform.position)<aiBehaviour.hearingDistance){
             targetPos = activeTarget.transform.position;
             timeSinceKnowledgeOfTarget = 0;
@@ -139,6 +201,8 @@ public class AIController : MonoBehaviour
                 }
             }
             if(coverState == AICoverState.ATCOVER){
+                Vector3 lookAtPos = new Vector3(activeTarget.transform.position.x,meshGameObj.transform.position.y,activeTarget.transform.position.z);
+                meshGameObj.transform.LookAt(lookAtPos);
                 combatState = AICombatState.SHOOT;
                 GameObject newCP = SearchBetterCover();
                 if(newCP!=null){
@@ -150,12 +214,11 @@ public class AIController : MonoBehaviour
             }
         }
         if(combatState == AICombatState.ADVANCE){
-            if(hasLOS){
-                if(Vector3.Distance(transform.position,activeTarget.transform.position) < aiBehaviour.maxAttackDistance){
-                    combatState = AICombatState.SHOOT;
-                }
+            if(hasLOS && (Vector3.Distance(transform.position,activeTarget.transform.position) < aiBehaviour.maxAttackDistance)){
+                combatState = AICombatState.SHOOT;
             }else if(Vector3.Distance(transform.position,activeTarget.transform.position) > aiBehaviour.maxAttackDistance || health.getHealth() > aiBehaviour.seekCoverBelowHealth){
                 agent.SetDestination(targetPos);
+                meshGameObj.transform.localRotation = Quaternion.identity;
             }else{
                 combatState = AICombatState.COVER;
             }
@@ -163,6 +226,8 @@ public class AIController : MonoBehaviour
 
         if(combatState == AICombatState.SHOOT){
             if(hasLOS && aiBehaviour.maxAttackDistance > Vector3.Distance(transform.position,activeTarget.transform.position)){
+                agent.SetDestination(transform.position);
+
                 ShootTarget();
             }else{
                 combatState = AICombatState.ADVANCE;
@@ -191,40 +256,75 @@ public class AIController : MonoBehaviour
     private void ShootTarget(){
         if(activeTarget == null)return;
         if(timeSinceLastShot < aiWeapon.rateOfFire) return;
-        transform.LookAt(targetPos);
+        if(isReloading){
+            return;
+        }
+
+        if(burstShotsFired > aiBehaviour.burstCount){
+            timeSinceLastBurst = 0;
+            burstShotsFired = 0;
+        }
+
+        if(timeSinceLastBurst < aiBehaviour.timeBeforeBurst){
+            return;
+        }
+        
+
+        if(magCount <= 0){
+            isReloading = true;
+            torsoAnimator.SetTrigger("reload");
+            return;
+        }
+        
+        torsoAnimator.SetTrigger("shoot");  
+        
+        
+        torsoMeshGameObj.transform.LookAt(targetPos);
 
         RaycastHit hit;
         Vector3 targetHitPoint = Vector3.zero;
         Transform adjustedTransform = activeTarget.transform;
         adjustedTransform.position += Vector3.up;
-        weaponBarell.LookAt(adjustedTransform);
+        weaponBarrel.LookAt(adjustedTransform);
+        
+        magCount--;
+        burstShotsFired++;
+
         for(int i = 0; i < aiWeapon.pelletCount ; i++){
-                 Vector3 forwardVector;
-                 if(aiWeapon.doesSpread){
-                    Vector3 deviation3D = Random.insideUnitCircle * aiWeapon.spread; // make some deviation
-                    Quaternion rot = Quaternion.LookRotation(Vector3.forward * aiWeapon.range + deviation3D);//get rotation
-                    forwardVector = weaponBarell.transform.rotation * rot * Vector3.forward; // apply rotation
-                }else{
-                    targetHitPoint = weaponBarell.transform.rotation * (Vector3.forward * aiWeapon.spreadDistance) +  (Random.insideUnitSphere*aiWeapon.spread);
-                    
-                 }
+            Vector3 forwardVector;
+            if(aiWeapon.doesSpread){
+                Vector3 deviation3D = Random.insideUnitCircle * aiWeapon.spread; // make some deviation
+                Quaternion rot = Quaternion.LookRotation(Vector3.forward * aiWeapon.range + deviation3D);//get rotation
+                forwardVector = weaponBarrel.transform.rotation * rot * Vector3.forward; // apply rotation
+            }else{
+                targetHitPoint = weaponBarrel.transform.rotation * ( (Vector3.forward * aiWeapon.spreadDistance) + (Vector3.forward * aiBehaviour.enemyWeaponAccuracy)) +  (Random.insideUnitSphere*aiWeapon.spread);
+                
+             }
 
-                Debug.DrawRay(weaponBarell.transform.position,targetHitPoint, Color.red,aiWeapon.range);
-                timeSinceLastShot = 0f;
-                if(Physics.Raycast(weaponBarell.transform.position,targetHitPoint, out hit, aiWeapon.range,mask)){
-                    print("Hit: " + hit.collider.gameObject.name);
-                    GameObject hitGameObject = hit.transform.gameObject;
-
-                    if(hitGameObject==null) return;
-                    //print("getting damage relat");
-                    if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
-                        health.TakeDamage(aiWeapon.damage);
-                        if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
-                          ai.ForceCombatAndTarget(AIState.COMBAT,gameObject);
-                        }
+            Debug.DrawRay(weaponBarrel.transform.position,targetHitPoint, Color.red,aiWeapon.range);
+            timeSinceLastShot = 0f;
+            if(Physics.Raycast(weaponBarrel.transform.position,targetHitPoint, out hit, aiWeapon.range,mask)){
+                print("Hit: " + hit.collider.gameObject.name);
+                GameObject hitGameObject = hit.transform.gameObject;
+                if(hitGameObject==null) return;
+                //print("getting damage relat");
+                if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
+                    health.TakeDamage(aiWeapon.damage);
+                    if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
+                      ai.ForceCombatAndTarget(AIState.COMBAT,gameObject);
                     }
                 }
             }
+        }
+
+
+    }
+
+
+    public void Reload(){
+        magCount = maxMag;
+        isReloading = false;
+        timeSpentReloading = 0;
     }
  
 
@@ -335,10 +435,11 @@ public class AIController : MonoBehaviour
 
     private bool HasLosTarget(){
         if(activeTarget == null) return false;
+        Debug.Log(hasLOS);
         RaycastHit hit;
         //Physics.Linecast(transform.position+(Vector3.up*1.78f),activeTarget.transform.position+(Vector3.zero*1.78f),out hit,mask);
-        Physics.Raycast(transform.position+(Vector3.up*1.78f),activeTarget.transform.position+(Vector3.zero*1.78f) - transform.position,out hit,aiBehaviour.viewDistance,mask);
-        Debug.DrawRay(transform.position+(Vector3.up*1.78f),activeTarget.transform.position+(Vector3.zero*1.78f) - transform.position,Color.cyan);
+        Physics.Raycast(transform.position+(Vector3.up*1.78f),activeTarget.transform.position+(Vector3.zero*1.5f) - transform.position,out hit,aiBehaviour.viewDistance,mask);
+        Debug.DrawRay(transform.position+(Vector3.up*1.78f),activeTarget.transform.position+(Vector3.zero*1.5f) - transform.position,Color.cyan);
         
        if(hit.collider == null) return false;
         
@@ -355,6 +456,14 @@ public class AIController : MonoBehaviour
             angleInDeg+=meshGameObj.transform.eulerAngles.y;
         }
         return new Vector3(Mathf.Sin(angleInDeg *Mathf.Deg2Rad),0,Mathf.Cos(angleInDeg *Mathf.Deg2Rad));
+    }
+
+
+    public void Die(){
+        agent.isStopped = true;
+        torsoAnimator.SetTrigger("die");
+        legsAnimator.SetTrigger("die");
+        this.enabled = false;
     }
 
     private void OnDrawGizmosSelected(){
@@ -383,7 +492,8 @@ public class AIController : MonoBehaviour
 public enum AIState{
     IDLE,
     PATROL,
-    COMBAT
+    COMBAT,
+    INVESTIGATE
 }
 
 public enum AICombatState{

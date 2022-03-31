@@ -12,4 +12,10 @@ public class AIWeapon : ScriptableObject
    public bool doesSpread = false;
    public float range = 100f;
    public float pelletCount = 1f;
+   public int magCount = 30;
+   public AnimatorOverrideController anim;
+   public Vector3 transformPos;
+   public Quaternion rotationPos;
+   public GameObject weapon;
+   public float reloadTime;
 }

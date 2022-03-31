@@ -14,14 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyWeaponAccuracy: 1
   maxAttackDistance: 25
+  burstCount: 3
+  timeBeforeBurst: 2
+  willInvestigate: 1
+  timeSpendInvestigate: 10
+  searchRadius: 1
   useCover: 1
   coverState: 2
   maxCoverDistance: 20.19
   seekCoverBelowHealth: 20
-  minDistanceIgnoreCover: 8.4
+  minDistanceIgnoreCover: 3.57
   hearingDistance: 16
   viewDistance: 45.1
   viewAngle: 90
+  timeBeforeGivingUpSearch: 10
   targetListTag:
   - Player
   - Team1

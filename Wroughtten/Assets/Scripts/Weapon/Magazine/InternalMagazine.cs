@@ -12,6 +12,11 @@ public class InternalMagazine : MonoBehaviour, IMagazine
     [SerializeField] int magazinecount;
     [SerializeField] public bool canAcceptAmmo = true;
     [SerializeField]public string[] compAmmoTags;
+
+    public int getMagazineCapacity(){
+        return magazineCapacity;
+    }
+    
     void Awake(){
         ammoDeposit = gameObject.GetComponent<BoxCollider>();
     }

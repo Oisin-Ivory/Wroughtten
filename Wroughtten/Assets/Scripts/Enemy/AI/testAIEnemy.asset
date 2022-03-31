@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8109f1d1a21875045b10fc44efc355b7, type: 3}
   m_Name: testAIEnemy
   m_EditorClassIdentifier: 
-  enemyWeaponAccuracy: 1
+  enemyWeaponAccuracy: 2
   maxAttackDistance: 25
+  burstCount: 3
+  timeBeforeBurst: 2
+  willInvestigate: 0
+  timeSpendInvestigate: 0
+  searchRadius: 0
   useCover: 1
   coverState: 2
   maxCoverDistance: 20.19
@@ -22,6 +27,7 @@ MonoBehaviour:
   hearingDistance: 16
   viewDistance: 45.1
   viewAngle: 90
+  timeBeforeGivingUpSearch: 10
   targetListTag:
   - Player
   - Team2
