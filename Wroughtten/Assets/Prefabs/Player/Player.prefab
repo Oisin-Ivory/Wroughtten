@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5908322932722777626}
   - component: {fileID: 3197860586590609082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1451951612816243276}
   - component: {fileID: 365188661020421283}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slot (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 248354555144483480}
   - component: {fileID: 7091973494726394872}
   - component: {fileID: 8953228365165930676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3548367276829477473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8153488163448753975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HolsterPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2605988971846049316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ChestRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4739064597181646124}
   - component: {fileID: 6087096729301546165}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8461082571735103598}
   - component: {fileID: 6561106273980482291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slot (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5297605340675879720}
   - component: {fileID: 827106949215556571}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HandR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85209793100621555}
   - component: {fileID: 290378779025069831}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slot (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2081138124142922375}
   - component: {fileID: 8725531670536606768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5742364976614530970}
   - component: {fileID: 1376358652393809661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slot (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 3138735821427857}
   - component: {fileID: 5023783354406794849}
   - component: {fileID: 4993210658223846984}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2966417897294219623}
   - component: {fileID: 2513646464144394819}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,11 +736,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc38912f57ea23449a2efd60e23a3de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToBob: {fileID: 0}
-  playerCharCntrl: {fileID: 0}
+  objectToBob: {fileID: 8592395255730781679}
+  playerCharCntrl: {fileID: 3548367275938774550}
   frequency: 7
   amplitude: 0.015
-  speedMultiplier: 0
+  speedMultiplier: 0.015
   maxBobSpeed: 999
 --- !u!1 &8844256233090705488
 GameObject:
@@ -752,7 +752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7954065117751269908}
   - component: {fileID: 1326471219658254311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HandL
   m_TagString: Untagged
   m_Icon: {fileID: 0}

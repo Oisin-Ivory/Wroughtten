@@ -15,7 +15,7 @@ MonoBehaviour:
   damage: 13
   spread: 3
   spreadDistance: 1
-  rateOfFire: 0.25
+  rateOfFire: 1
   doesSpread: 0
   range: 100
   pelletCount: 1

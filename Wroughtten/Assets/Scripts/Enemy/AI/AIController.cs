@@ -435,7 +435,7 @@ public class AIController : MonoBehaviour
 
     private bool HasLosTarget(){
         if(activeTarget == null) return false;
-        Debug.Log(hasLOS);
+//        Debug.Log(hasLOS);
         RaycastHit hit;
         //Physics.Linecast(transform.position+(Vector3.up*1.78f),activeTarget.transform.position+(Vector3.zero*1.78f),out hit,mask);
         Physics.Raycast(transform.position+(Vector3.up*1.78f),activeTarget.transform.position+(Vector3.zero*1.5f) - transform.position,out hit,aiBehaviour.viewDistance,mask);
