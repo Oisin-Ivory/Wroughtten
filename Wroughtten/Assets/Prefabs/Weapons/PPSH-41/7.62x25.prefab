@@ -134,7 +134,7 @@ MonoBehaviour:
   meshFilter: {fileID: 6290752361609290352}
   isSpent: 0
   ammoPelletCount: 1
-  ammoDamage: 25
+  ammoDamage: 40
   spread: 0
   range: 300
   isInMag: 0

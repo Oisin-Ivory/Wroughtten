@@ -16,6 +16,10 @@ public class HandManager : MonoBehaviour
 
     [SerializeField] ChestRigManager chestRigManager;
 
+
+    public bool IsADS(){
+        return ADS;
+    }
     private void Update(){
         timeSinceReload+=Time.deltaTime;
         PickUpObject("e",1);
@@ -29,6 +33,17 @@ public class HandManager : MonoBehaviour
         HandleInput();
     }
 
+
+    public bool HasWeapon(){
+        if(hands[0].handObject == null)
+            return false;
+            
+        return hands[0].handObject.TryGetComponent<Weapon>(out Weapon weapon);
+    }
+
+    public Weapon GetWeapon(){
+        return hands[0].handObject.GetComponent<Weapon>();
+    }
     private void HandleInput()
     {
         if(!hands[0].isEmpty() && hands[1].isEmpty()){
@@ -89,7 +104,7 @@ private void PickUpObject(string key,int hand){
             UpdateHandPosition();
         }
     }
-    private GameObject GetObjectLookingAt(){
+    public GameObject GetObjectLookingAt(){
         Debug.DrawRay(Camera.main.transform.position,
                             Camera.main.transform.forward,Color.green);
         RaycastHit hit;
@@ -169,9 +184,9 @@ private void PickUpObject(string key,int hand){
 
         if(Input.GetKeyDown(KeyCode.H)){
             if(hands[0].isEmpty() && !hands[0].isLocked){
-                print("retrieving holstered item");
+               // print("retrieving holstered item");
                 GameObject retItem = chestRigManager.RetrieveHolstered();
-                Debug.Log("Retrieved item: "+retItem.name);
+                //Debug.Log("Retrieved item: "+retItem.name);
                 if(retItem == null)return;
                 hands[0].PickUpObject(retItem);
             }else if(!hands[0].isEmpty()){

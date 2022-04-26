@@ -24,8 +24,8 @@ MonoBehaviour:
   maxCoverDistance: 20.19
   seekCoverBelowHealth: 20
   minDistanceIgnoreCover: 3.57
-  hearingDistance: 16
-  viewDistance: 45.1
+  hearingDistance: 8
+  viewDistance: 20
   viewAngle: 90
   timeBeforeGivingUpSearch: 10
   targetListTag:

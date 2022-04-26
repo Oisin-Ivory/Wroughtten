@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AK
   m_EditorClassIdentifier: 
   damage: 13
-  spread: 3
-  spreadDistance: 1
+  spread: 0.5
+  spreadDistance: 10
   rateOfFire: 1
   doesSpread: 0
   range: 100

@@ -209,8 +209,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 762cd071ce1d6c44bb67524f5fbeae9b, type: 2}
+  relatedLimb: {fileID: 1287525152009518906}
 --- !u!1 &664121320192813710
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,8 +276,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 5a5620e5688586041a05dad3fd489e27, type: 2}
+  relatedLimb: {fileID: 2822986191778923920}
 --- !u!1 &681967128492841294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,8 +1163,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 32046a028ea861a46a283ce4c803e83b, type: 2}
+  relatedLimb: {fileID: 1119506389428278055}
 --- !u!1 &3102539021805859690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,8 +1508,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 32046a028ea861a46a283ce4c803e83b, type: 2}
+  relatedLimb: {fileID: 3618290993060077620}
 --- !u!1 &3530482184023709548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,8 +1947,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 32046a028ea861a46a283ce4c803e83b, type: 2}
+  relatedLimb: {fileID: 5275920962010179312}
 --- !u!1 &4030685664823087578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,6 +2053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1450692376356095046}
   - component: {fileID: 229762238589952832}
+  - component: {fileID: 1224167486}
   m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
@@ -2097,6 +2098,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1224167486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4698616647028039268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c102dedb527935e46aeb9cf22c544ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 7934525613934194858}
 --- !u!1 &4863701637900193838
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,8 +2259,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 5a5620e5688586041a05dad3fd489e27, type: 2}
+  relatedLimb: {fileID: 2648901192959691960}
 --- !u!1 &5213155074182882816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,11 +2516,11 @@ MonoBehaviour:
   agent: {fileID: 2836032688049177215}
   health: {fileID: 5876038862831421695}
   state: 0
-  combatState: 2
+  combatState: 0
   coverState: 0
   hasLOS: 0
   initialState: 0
-  initialcombatState: 2
+  initialcombatState: 0
   initialcoverState: 0
   startingPos: {x: 0, y: 0, z: 0}
   startingRot: {x: 0, y: 0, z: 0, w: 0}
@@ -2539,6 +2553,7 @@ MonoBehaviour:
   isShooting: 0
   burstShotsFired: 0
   timeSinceLastBurst: Infinity
+  timeSinceLastShot: Infinity
 --- !u!114 &5876038862831421695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2552,6 +2567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 100
   Event:
     m_PersistentCalls:
       m_Calls:
@@ -2620,6 +2636,7 @@ MonoBehaviour:
   - {fileID: 4765323412916662307, guid: ada330094ad3ce14bb7abf925bb893ea, type: 3}
   - {fileID: 1914609143740718209, guid: 23a8478461dd98c4faa377b4c7fdc7e8, type: 3}
   - {fileID: 1914609143740718209, guid: 23a8478461dd98c4faa377b4c7fdc7e8, type: 3}
+  vectorOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &5386794369012316850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2685,8 +2702,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 762cd071ce1d6c44bb67524f5fbeae9b, type: 2}
+  relatedLimb: {fileID: 3986653858709894208}
 --- !u!1 &5391787339386705613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2783,8 +2800,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 5a5620e5688586041a05dad3fd489e27, type: 2}
+  relatedLimb: {fileID: 3665816658829899782}
 --- !u!1 &5776495470399838322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,8 +3023,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 762cd071ce1d6c44bb67524f5fbeae9b, type: 2}
+  relatedLimb: {fileID: 7786632724460175230}
 --- !u!1 &6740571863431481981
 GameObject:
   m_ObjectHideFlags: 0
@@ -3251,8 +3268,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 5a5620e5688586041a05dad3fd489e27, type: 2}
+  relatedLimb: {fileID: 1142967028737290912}
 --- !u!1 &6947602829032880084
 GameObject:
   m_ObjectHideFlags: 0
@@ -3349,8 +3366,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 32046a028ea861a46a283ce4c803e83b, type: 2}
+  relatedLimb: {fileID: 3388138187608356731}
 --- !u!1 &7012657747837020364
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,8 +3612,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 5a5620e5688586041a05dad3fd489e27, type: 2}
+  relatedLimb: {fileID: 1296885953992706446}
 --- !u!1 &7303334100127422701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,8 +3762,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 32046a028ea861a46a283ce4c803e83b, type: 2}
+  relatedLimb: {fileID: 7021855443541198224}
 --- !u!1 &7763351635367807246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,8 +3978,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 32046a028ea861a46a283ce4c803e83b, type: 2}
+  relatedLimb: {fileID: 4863701637900193838}
 --- !u!1 &8118748354529899428
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,8 +4032,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 5a5620e5688586041a05dad3fd489e27, type: 2}
+  relatedLimb: {fileID: 7303334100127422701}
 --- !u!136 &8305152960524451998
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4110,8 +4127,8 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 762cd071ce1d6c44bb67524f5fbeae9b, type: 2}
+  relatedLimb: {fileID: 924517000300167050}
 --- !u!1 &8448059880631042054
 GameObject:
   m_ObjectHideFlags: 0
@@ -4259,7 +4276,7 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 2100000, guid: 7a4bb0e94e9965144a25f03259d192d1, type: 2}
+  bloodyMaterial: {fileID: 2100000, guid: 32046a028ea861a46a283ce4c803e83b, type: 2}
   relatedLimb: {fileID: 368054441094093861}
 --- !u!1 &8933502027372116377
 GameObject:
@@ -4326,5 +4343,5 @@ MonoBehaviour:
   additionalUpForce: 1
   maxForce: 2
   minForce: -2
-  bloodyMaterial: {fileID: 0}
-  relatedLimb: {fileID: 0}
+  bloodyMaterial: {fileID: 2100000, guid: 5a5620e5688586041a05dad3fd489e27, type: 2}
+  relatedLimb: {fileID: 3102539021805859690}

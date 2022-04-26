@@ -33,6 +33,9 @@ public class Weapon : MonoBehaviour
         }
 
     }
+    public FireSelectState getSafteyState(){
+        return weaponFireSelect.getState();
+    }
 
     void Update(){
         weaponOffsetPosition = Vector3.Lerp(weaponOffsetPosition,Vector3.zero,Time.deltaTime);

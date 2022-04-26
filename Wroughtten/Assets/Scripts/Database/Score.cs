@@ -1,20 +1,22 @@
 using System;
 
+[System.Serializable]
 public class Score{
     public string name;
-    public float time, kills;
-    public int scene;
+    public float time;
+    public int scene,enemiesAtStart,kills;
 
-    public Score(string name,float time,float kills,int scene){
+    public Score(string name,float time,int kills,int enemiesAtStart,int scene){
         this.name = name;
         this.time = time;
         this.kills = kills;
         this.scene = scene;
+        this.enemiesAtStart = enemiesAtStart;
     }
 
-    public float CalcScore(int enemiesInScene){
+    public float CalcScore(){
         
-        return ((this.kills/enemiesInScene)/this.time)*100;
+        return (((float)this.kills/(float)enemiesAtStart)/this.time)*100;
     }
 
     public string toString(){

@@ -29,11 +29,14 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private bool isCrouching = false;
     [SerializeField] private float crouchHeight = 1.78f/2f;
     [SerializeField][Range(0,1)] private float crouchProgress = 0f;
+    [SerializeField] private CapsuleCollider capsuleCollider;
+    [SerializeField] private LayerMask mask;
     private float originHeight;
     
 
     void Awake(){
         originHeight = characterController.height;
+        capsuleCollider = GetComponent<CapsuleCollider>();
     }
     void Update(){
 
@@ -49,7 +52,8 @@ public class Player_Movement : MonoBehaviour
                 crouchProgress = Mathf.Clamp(crouchProgress,0,1);
                 characterController.height = Mathf.Lerp(originHeight,characterController.height,crouchProgress);;
             }
-            onGround = Physics.CheckSphere(groundCheck.transform.position,0.1f) ? true : false;
+            capsuleCollider.height = characterController.height;
+            onGround = Physics.CheckSphere(groundCheck.transform.position,0.1f,mask) ? true : false;
 
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");

@@ -40,7 +40,7 @@ public class Hand : MonoBehaviour
             return;
         }
             
-        print("pasted third: "+obj.name);
+        //print("pasted third: "+obj.name);
         if(obj.TryGetComponent<Rigidbody>(out Rigidbody objRB)){
             objRB.constraints =
             RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY| 
@@ -53,7 +53,7 @@ public class Hand : MonoBehaviour
         obj.transform.rotation = new Quaternion(0,0,0,0);
         handObject = obj;
         
-        print("picked up: "+obj.name);
+        //print("picked up: "+obj.name);
         StartCoroutine(lerpObjToPosition(obj,Vector3.zero,0.25f));
         
         handEmpty = false;

@@ -5,11 +5,12 @@ using UnityEngine;
 public class LootSpawn : MonoBehaviour
 {
     [SerializeField] GameObject[] lootToSpawn;
+    [SerializeField] Vector3 vectorOffset = Vector3.up;
 
     public void SpawnLoot(){
         float offset = 0;
         foreach (GameObject obj in lootToSpawn){
-            Instantiate(obj,transform.position + getRandDir()*offset ,Quaternion.identity);
+            Instantiate(obj,transform.position + getRandDir()*offset + vectorOffset,Quaternion.identity);
             offset+=0.25f;
         }
         Destroy(this);

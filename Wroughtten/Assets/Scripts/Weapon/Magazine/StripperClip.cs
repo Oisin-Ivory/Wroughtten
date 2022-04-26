@@ -12,7 +12,9 @@ public class StripperClip : MonoBehaviour
     [SerializeField] BoxCollider loadCollider = null;
     [SerializeField]public string[] compAmmoTags;
 
-
+    public int getClipCapacity(){
+        return clipCapacity;
+    }
     void Update(){
         UpdateBulletPosition();
     }

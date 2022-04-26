@@ -37,7 +37,6 @@ public class AIController : MonoBehaviour
     [SerializeField] GameObject coverPoint;
     [SerializeField] Vector3 targetPos;
     [SerializeField] LayerMask mask;
-    private float timeSinceLastShot = Mathf.Infinity;
     [SerializeField] float timeSinceKnowledgeOfTarget = 0f;
     [SerializeField] float timeSpentInvestigating = 0f;
 
@@ -64,6 +63,7 @@ public class AIController : MonoBehaviour
     [SerializeField] bool isShooting = false;
     [SerializeField] float burstShotsFired = 0f;
     [SerializeField] float timeSinceLastBurst = Mathf.Infinity;
+    [SerializeField] private float timeSinceLastShot = Mathf.Infinity;
     
 
 
@@ -253,6 +253,47 @@ public class AIController : MonoBehaviour
         return (Vector3.Distance(transform.position,coverPoint.transform.position) < 1f) ? AICoverState.ATCOVER : AICoverState.NOTATCOVER;
     }
 
+    public void Shoot(){
+        
+        if(timeSinceLastShot < aiWeapon.rateOfFire)
+            return;
+        RaycastHit hit;
+        Vector3 targetHitPoint = Vector3.zero;
+        Transform adjustedTransform = activeTarget.transform;
+        weaponBarrel.LookAt(adjustedTransform.position + Vector3.up);
+        
+        magCount--;
+        burstShotsFired++;
+        isShooting = false;
+
+        for(int i = 0; i < aiWeapon.pelletCount ; i++){
+            Vector3 forwardVector;
+            if(aiWeapon.doesSpread){
+                Vector3 deviation3D = Random.insideUnitCircle * aiWeapon.spread; // make some deviation
+                Quaternion rot = Quaternion.LookRotation(Vector3.forward * aiWeapon.range + deviation3D);//get rotation
+                forwardVector = weaponBarrel.transform.rotation * rot * Vector3.forward; // apply rotation
+            }else{
+                targetHitPoint = weaponBarrel.transform.rotation * ( (Vector3.forward * aiWeapon.spreadDistance) + (Vector3.forward * aiBehaviour.enemyWeaponAccuracy)) +  (Random.insideUnitSphere*aiWeapon.spread);
+             }
+
+            Debug.DrawRay(weaponBarrel.transform.position,targetHitPoint, Color.red,aiWeapon.range);
+            timeSinceLastShot = 0f;
+            if(Physics.Raycast(weaponBarrel.transform.position,targetHitPoint, out hit, aiWeapon.range,mask)){
+                print("Hit: " + hit.collider.gameObject.name);
+                GameObject hitGameObject = hit.transform.gameObject;
+                if(hitGameObject==null) return;
+                //print("getting damage relat");
+                if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
+                    health.TakeDamage(aiWeapon.damage);
+                    if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
+                      ai.ForceCombatAndTarget(AIState.COMBAT,gameObject);
+                    }
+                }
+            }
+        }
+
+    }
+
     private void ShootTarget(){
         if(activeTarget == null)return;
         if(timeSinceLastShot < aiWeapon.rateOfFire) return;
@@ -276,47 +317,18 @@ public class AIController : MonoBehaviour
             return;
         }
         
+        if(isShooting)
+            return;
+
+        
+        Debug.Log("shooting");
+        isShooting = true;
         torsoAnimator.SetTrigger("shoot");  
         
         
-        torsoMeshGameObj.transform.LookAt(targetPos);
+        transform.LookAt(targetPos);
 
-        RaycastHit hit;
-        Vector3 targetHitPoint = Vector3.zero;
-        Transform adjustedTransform = activeTarget.transform;
-        adjustedTransform.position += Vector3.up;
-        weaponBarrel.LookAt(adjustedTransform);
         
-        magCount--;
-        burstShotsFired++;
-
-        for(int i = 0; i < aiWeapon.pelletCount ; i++){
-            Vector3 forwardVector;
-            if(aiWeapon.doesSpread){
-                Vector3 deviation3D = Random.insideUnitCircle * aiWeapon.spread; // make some deviation
-                Quaternion rot = Quaternion.LookRotation(Vector3.forward * aiWeapon.range + deviation3D);//get rotation
-                forwardVector = weaponBarrel.transform.rotation * rot * Vector3.forward; // apply rotation
-            }else{
-                targetHitPoint = weaponBarrel.transform.rotation * ( (Vector3.forward * aiWeapon.spreadDistance) + (Vector3.forward * aiBehaviour.enemyWeaponAccuracy)) +  (Random.insideUnitSphere*aiWeapon.spread);
-                
-             }
-
-            Debug.DrawRay(weaponBarrel.transform.position,targetHitPoint, Color.red,aiWeapon.range);
-            timeSinceLastShot = 0f;
-            if(Physics.Raycast(weaponBarrel.transform.position,targetHitPoint, out hit, aiWeapon.range,mask)){
-                print("Hit: " + hit.collider.gameObject.name);
-                GameObject hitGameObject = hit.transform.gameObject;
-                if(hitGameObject==null) return;
-                //print("getting damage relat");
-                if(hitGameObject.TryGetComponent<DamageRelay>(out DamageRelay health)){
-                    health.TakeDamage(aiWeapon.damage);
-                    if(health.GetHealth().gameObject.TryGetComponent<AIController>(out AIController ai)){
-                      ai.ForceCombatAndTarget(AIState.COMBAT,gameObject);
-                    }
-                }
-            }
-        }
-
 
     }
 
