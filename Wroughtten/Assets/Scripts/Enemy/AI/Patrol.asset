@@ -22,7 +22,7 @@ MonoBehaviour:
   useCover: 1
   coverState: 1
   maxCoverDistance: 20.19
-  seekCoverBelowHealth: 20
+  seekCoverBelowHealth: 50
   minDistanceIgnoreCover: 3.57
   hearingDistance: 8
   viewDistance: 20

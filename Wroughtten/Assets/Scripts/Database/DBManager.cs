@@ -71,7 +71,11 @@ public class DBManager : MonoBehaviour{
         
         errorText.SetActive(true);
         yield return new WaitForSeconds(5);
-        errorText.SetActive(false);
+        try{
+            errorText.SetActive(false);
+        }catch(Exception e){
+            Debug.Log("Decativated");
+        }
     }
 
     IEnumerator Register(string userName,string password){

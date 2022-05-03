@@ -475,9 +475,9 @@ MonoBehaviour:
   weaponPosition: {x: 0.076, y: -0.134, z: 0.298}
   weaponAdsPosition: {x: 0, y: -0.073, z: 0.217}
   weaponOffsetPosition: {x: 0, y: 0, z: 0}
-  detachableMagazine: 0
+  detachableMagazine: 1
   clipAcceptor: {fileID: 0}
-  magAcceptor: {fileID: 0}
+  magAcceptor: {fileID: 6776841474473368124}
   magazinePosition: {fileID: 1670205545224745936}
 --- !u!114 &845849711311692355
 MonoBehaviour:

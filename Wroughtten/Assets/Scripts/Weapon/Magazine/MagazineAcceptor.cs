@@ -43,6 +43,7 @@ public class MagazineAcceptor : MonoBehaviour
     }
 
     public void Ejectmag(){
+        print("ejecting");
         if(attachedMagazine==null)return;
         
         magazineAttached = false;

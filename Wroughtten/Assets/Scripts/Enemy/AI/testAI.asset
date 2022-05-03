@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: testAI
   m_EditorClassIdentifier: 
   enemyWeaponAccuracy: 1
-  maxAttackDistance: 25
+  maxAttackDistance: 30
   burstCount: 3
   timeBeforeBurst: 2
   willInvestigate: 1
   timeSpendInvestigate: 10
   searchRadius: 1
   useCover: 1
-  coverState: 2
+  coverState: 1
   maxCoverDistance: 20.19
-  seekCoverBelowHealth: 20
+  seekCoverBelowHealth: 80
   minDistanceIgnoreCover: 3.57
   hearingDistance: 8
   viewDistance: 20

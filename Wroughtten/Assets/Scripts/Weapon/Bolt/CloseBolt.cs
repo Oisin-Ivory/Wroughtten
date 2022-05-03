@@ -113,7 +113,10 @@ public class CloseBolt : MonoBehaviour, IBolt
                 UpdateBoltPosition(0,recoilStrenght);
             }else{
                 isRecoiling=false;
-                if(weapon.getMagazine().getBulletCount()==0 && willHoldOpenOnEmpty){
+                if(weapon.getMagazine()==null){
+                    holdingOpen = true;
+                    minBoltPos = holdBoltOpenAt;
+                }else if(weapon.getMagazine().getBulletCount()==0 && willHoldOpenOnEmpty){
                     holdingOpen = true;
                     minBoltPos = holdBoltOpenAt;
                 }
@@ -151,7 +154,8 @@ public class CloseBolt : MonoBehaviour, IBolt
         round = null;
         hasRound = false;
         //canTakeRound = true;
-        weapon.getMagazine().UpdateBulletPosition();
+        if(weapon.getMagazine()!=null)
+            weapon.getMagazine().UpdateBulletPosition();
     }
 
 

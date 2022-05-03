@@ -162,7 +162,7 @@ public class AIController : MonoBehaviour
         coverState = UpdateCoverState();
         if(Vector3.Distance(transform.position,targetPos) > 1.5f)
             torsoMeshGameObj.transform.LookAt(targetPos);
-        if(hasLOS || Vector3.Distance(activeTarget.transform.position,transform.position)<aiBehaviour.hearingDistance){
+        if(activeTarget!=null && (hasLOS || Vector3.Distance(activeTarget.transform.position,transform.position)<aiBehaviour.hearingDistance)){
             targetPos = activeTarget.transform.position;
             timeSinceKnowledgeOfTarget = 0;
         }else{
@@ -487,12 +487,15 @@ public class AIController : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(meshGameObj.transform.position,aiBehaviour.minDistanceIgnoreCover);
         Gizmos.DrawWireSphere(meshGameObj.transform.position,aiBehaviour.maxCoverDistance);
+
+        
         
         Gizmos.color = Color.green;
         Gizmos.DrawLine(meshGameObj.transform.position,meshGameObj.transform.position + viewAngleA * aiBehaviour.viewDistance);
         Gizmos.DrawLine(meshGameObj.transform.position,meshGameObj.transform.position + viewAngleB * aiBehaviour.viewDistance);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(meshGameObj.transform.position,aiBehaviour.hearingDistance);
+        Gizmos.DrawWireSphere(meshGameObj.transform.position,aiBehaviour.maxAttackDistance);
         if(targetPos!=null){
             Gizmos.DrawCube(targetPos,new Vector3(1,1,1));
         }

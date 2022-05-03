@@ -35,7 +35,6 @@ public class LevelStats : MonoBehaviour
         kills.text = "Kills: " + currentScore.kills;
         time.text = "Time: " + currentScore.time;   
         score.text = "Score: " + currentScore.CalcScore();
-        string lb = "";
         //db.AttemptGetScores(5,currentScore.scene,ref lb);
         StartCoroutine(db.getScores(10,currentScore.scene,result=>{
 
@@ -55,7 +54,7 @@ public class LevelStats : MonoBehaviour
             if(entries.Length<3)
                 continue;
             for(int i=0 ; i < 4; i++ ){
-                ret += entries[i]+"\t";
+                ret += entries[i]+"\t|\t";
             }
             ret += "\n";
         }
