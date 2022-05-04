@@ -85,7 +85,6 @@ public class BoltAction : MonoBehaviour, IBolt
     public void UpdateBoltPosition(float inputX, float inputY)
     {
         if(freezeBolt)return;
-
         boltProgress = (stageOneProgress+stageTwoProgress)/2;
         if(boltStageOne){
             //Debug.Log("Stage 1: "+stageOneProgress);
