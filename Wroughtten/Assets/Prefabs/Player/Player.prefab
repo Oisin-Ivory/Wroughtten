@@ -665,7 +665,6 @@ GameObject:
   - component: {fileID: 5512978577834939199}
   - component: {fileID: 948839665963859734}
   - component: {fileID: 235529731147131639}
-  - component: {fileID: 4630148314538473491}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -931,21 +930,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 1783
---- !u!114 &4630148314538473491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3548367275938774554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cfee464bf7d81047ab2296846bb8192, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 8847833102693149275}
-  godmodeIndicator: {fileID: 5936411489063508461}
-  timeIndicator: {fileID: 5807534715348547961}
 --- !u!1 &3548367276829477474
 GameObject:
   m_ObjectHideFlags: 0

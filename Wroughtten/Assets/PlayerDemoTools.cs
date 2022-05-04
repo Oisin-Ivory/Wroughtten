@@ -20,6 +20,9 @@ public class PlayerDemoTools : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(godMode){
+            playerHealth.Heal(100);
+        }
         if(Input.GetKeyUp(KeyCode.O)){
             ToggleGodMode();
         }
@@ -31,7 +34,6 @@ public class PlayerDemoTools : MonoBehaviour
     void ToggleGodMode(){
         godMode = !godMode;
         godmodeIndicator.SetActive(godMode);
-        playerHealth.enabled = !godMode;
     }
 
     void ToggleSlowDown(){
