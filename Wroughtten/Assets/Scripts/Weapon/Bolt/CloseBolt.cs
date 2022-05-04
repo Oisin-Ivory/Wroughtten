@@ -113,7 +113,7 @@ public class CloseBolt : MonoBehaviour, IBolt
                 UpdateBoltPosition(0,recoilStrenght);
             }else{
                 isRecoiling=false;
-                if(weapon.getMagazine()==null){
+                if(weapon.getMagazine()==null && willHoldOpenOnEmpty){
                     holdingOpen = true;
                     minBoltPos = holdBoltOpenAt;
                 }else if(weapon.getMagazine().getBulletCount()==0 && willHoldOpenOnEmpty){

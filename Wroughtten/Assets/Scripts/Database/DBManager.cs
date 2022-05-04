@@ -57,11 +57,13 @@ public class DBManager : MonoBehaviour{
         WWW www = new WWW(url);
         yield return www;
         Debug.Log(www.text);
+        errorText.SetActive(true);
+        errorText.GetComponent<Text>().text = www.text;
         if(www.text!="Failed"){
             string[] credentials = www.text.Split(' ');
             playerName = credentials[0];
             GetComponent<GameManager>().playerName = playerName;
-            Destroy(GameObject.Find("Login"));
+            Destroy(GameObject.FindGameObjectWithTag("login"));
         }else{
             StartCoroutine(displayError());
         }

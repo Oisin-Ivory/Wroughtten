@@ -14877,14 +14877,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AKM
       objectReference: {fileID: 0}
-    - target: {fileID: 8970973655689678185, guid: ada330094ad3ce14bb7abf925bb893ea, type: 3}
-      propertyPath: magazineEjectDir.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8970973655689678185, guid: ada330094ad3ce14bb7abf925bb893ea, type: 3}
-      propertyPath: magazineEjectDir.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada330094ad3ce14bb7abf925bb893ea, type: 3}
 --- !u!1001 &1914738788
