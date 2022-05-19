@@ -149,7 +149,7 @@ public class OpenBolt : MonoBehaviour, IBolt
     public void UpdateBoltPosition(float inputX, float inputY){
         if(freezeBolt)return;
         float dt = Time.deltaTime;
-        dt = Mathf.Clamp(dt,0,0.003f);
+        dt = Mathf.Clamp(dt,0,0.007f);
         //print("Moving Bolt " + inputY);
         if(Mathf.Abs(inputY)>1)
                 boltProgress += (inputY*-1) * dt * boltSpeedModifier;
