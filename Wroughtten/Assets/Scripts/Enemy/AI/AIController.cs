@@ -120,7 +120,8 @@ public class AIController : MonoBehaviour
         if(!aiBehaviour.willInvestigate) return;
         state = AIState.INVESTIGATE;
         targetPos = position + Random.insideUnitSphere*aiBehaviour.searchRadius;
-        agent.SetDestination(position);
+        if(agent.isActiveAndEnabled)
+            agent.SetDestination(position);
     }
     
     void Update()

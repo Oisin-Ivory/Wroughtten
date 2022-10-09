@@ -60,6 +60,7 @@ public class HandManager : MonoBehaviour
     #region reloading
     private void Reload(){
         if(reloading)return;
+        print("reloading");
         if(!hands[0].handEmpty && hands[1].handEmpty){
             if(hands[0].handObject.TryGetComponent<Weapon>(out Weapon wpn)){
                 if(wpn.detachableMagazine){
@@ -118,7 +119,7 @@ private void PickUpObject(string key,int hand){
 
 #endregion
     private void UpdateHandPosition(){
-        //print("updating hand position");
+        print("updating hand position");
         if(hands[0].isEmpty()){
             hands[0].ResetHandPos();
         }
